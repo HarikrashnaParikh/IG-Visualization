@@ -1,10 +1,31 @@
-
+<h1>Hello</h1>
 <p-organizationChart [value]="data">
     <ng-template let-node pTemplate="person">
         <div class="p-2 text-center">
-            <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" />
-            <div class="font-bold">{{ node.data.name }}</div>
-            <div>{{ node.data.title }}</div>
+            <!-- <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" /> -->
+            <div class="font-bold">{{ node.data.id }}</div>
+            <div>{{ node.data.description }}</div>
+            <div>{{ node.data.definitionCanonical }}</div>
+
         </div>
     </ng-template>
-</p-organizationChart>
+</p-organizationChart>  
+
+<h1>Hello this is backend data object</h1>
+<!-- <h2>{{posts}}</h2>   -->
+
+<ul>
+    <li 
+        *ngFor="let action of posts.action"
+        class="list-group-item">
+        Action Id : 
+        {{ action.id }}
+        <br>
+        Description :
+        {{ action.description}}
+        <br>
+        DefinitionCanonical : 
+        {{action.definitionCanonical}}
+        <hr>
+    </li>
+  </ul>
