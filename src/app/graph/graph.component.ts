@@ -10,8 +10,8 @@ import { GraphServiceService } from '../graph-service.service';
 export class GraphComponent implements OnInit {
   posts: any = [];
   i: number = 0;
-  children=[];  
-  data!: TreeNode[] ;
+  isChildren:any = [];
+  data!: TreeNode[];
   constructor(private graphService: GraphServiceService) {}
   ngOnInit() {
     this.graphService.getPlanDefinition().subscribe((response: any) => {
@@ -25,59 +25,57 @@ export class GraphComponent implements OnInit {
           data: {
             id: 'Plan Definition',
           },
-          children: [
-            {
-              expanded: true,
-              type: 'person',
-              styleClass: 'bg-purple-500 text-white ',
-              data: {
-                id: this.childData(this.i,this.posts),
-              },
-              children: [
-                {
-                  label: 'Sales',
-                  styleClass: 'bg-purple-500 text-white',
-                  style: ' border-radius: 12px',
-                },
-                {
-                  label: 'Marketing',
-                  styleClass: 'bg-purple-500 text-white',
-                  style: ' border-radius: 12px',
-                },
-              ],
-            },
-            {
-              expanded: true,
-              type: 'person',
-              styleClass: 'bg-teal-500 text-white',
-              data: {
-                id: this.childData(this.i,this.posts),
-
-              },
-              children: [
-                {
-                  label: 'Development',
-                  styleClass: 'bg-teal-500 text-white',
-                },
-                {
-                  label: 'UI/UX Design',
-                  styleClass: 'bg-teal-500 text-white',
-                },
-              ],
-            },
-          ],
+          children:[]
         },
       ];
+      const childrenData = this.posts.action;
+      console.log(JSON.stringify(childrenData));
+      // this.isChild(childrenData);
+      if (this.data && this.data[0]?.children) {
+        this.data[0].children.push({
+          expanded: true,
+          type: 'child',
+          styleClass: 'bg-blue-500 text-white',
+          data: {
+            id: 'Child 1',
+          },
+        });
+      
     });
   }
-  childData(i: number,posts: any) {
-    let id = posts.action[i].id;
-    console.log("inside function id value : "+id)
-    this.i=++i;
+  childData(i: number, posts: any) {
+    let actionId = posts.action[i].id;
+    console.log('inside function id value : ' + actionId);
+    this.i = ++i;
     console.log(this.i);
-    
-    return id;
+    const expanded= true;
+    const type= 'person';
+    const styleClass = 'bg-purple-500 text-white ';
+    const data= {
+      id: actionId 
+    };
+    // for (let i = 0; i < posts.length; i++) {
+  //   this.data[0].children.push({
+  //     expanded: true,
+  //     type: 'child',
+  //     styleClass: 'bg-blue-500 text-white',
+  //     data: child,
+  //     children: [],
+  //   });
+  // }  return this.isChildren;
   }
 
+  isChild(action: any){
+    for (const child of action) {
+      this.data[0].children.push({
+        expanded: true,
+        type: 'child',
+        styleClass: 'bg-blue-500 text-white',
+        data: child.id,
+        children: [],
+      });
+    }
+  }
+  
 
-} 
+}
