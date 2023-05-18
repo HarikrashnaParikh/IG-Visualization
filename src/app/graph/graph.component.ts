@@ -30,19 +30,6 @@ export class GraphComponent implements OnInit {
           children: [],
         },
       ];
-      const childrenData = this.posts.action;
-      console.log(JSON.stringify(childrenData));
-      // this.isChild(childrenData);
-      if (this.data && this.data[0]?.children) {
-        this.data[0].children.push({
-          expanded: true,
-          type: 'child',
-          styleClass: 'bg-blue-500 text-white',
-          data: {
-            id: 'Child 1',
-          },
-        });
-      
     });
 
     this.graphService.getActions().subscribe((response: any) => {
