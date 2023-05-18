@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {OrganizationChartModule} from 'primeng/organizationchart'
 import { GraphComponent } from './graph/graph.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { UploadFileComponent } from './upload-file/upload-file.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    GraphComponent
+    GraphComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,
