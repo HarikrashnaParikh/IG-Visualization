@@ -5,13 +5,17 @@ import { GraphComponent } from './graph/graph.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
   { path: 'home', component: UploadFileComponent },
   { path: 'visualization', component: GraphComponent },
-  
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

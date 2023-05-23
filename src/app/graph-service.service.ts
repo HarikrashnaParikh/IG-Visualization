@@ -7,18 +7,33 @@ import { Injectable } from '@angular/core';
 export class GraphServiceService {
 
   private url = 'http://localhost:8080'; 
+  // activityDefinitionId : any;
 
   constructor(private httpClient: HttpClient) {}
 
   getPlanDefinition(){  
-    return this.httpClient.get(`${this.url}/pd`);
+    return this.httpClient.get(`${this.url}/planDefinition`);
   }
 
   getActions(){
-    return this.httpClient.get(`${this.url}/pd/actions`);
+    return this.httpClient.get(`${this.url}/planDefinition/actions`);
   }
 
-  getQuestionnaire(){
-    return this.httpClient.get(`${this.url}/questionnaire`);
+  getActivityDefinition(){
+    return this.httpClient.get(`${this.url}/activityDefinition`);
+  }
+
+  getActivityDefinitionById(activityDefinitionId: any){
+    
+    return this.httpClient.get(`${this.url}/activityDefinition/`+activityDefinitionId);
+  }
+
+  getQuestionnaireByID(activityDefinitionId: any){
+    return this.httpClient.get(`${this.url}/questionnaire/`+activityDefinitionId);
+  }
+
+  getStructureMapByID(activityDefinitionId: any){
+    return this.httpClient.get(`${this.url}/structureMap/`+activityDefinitionId);
+
   }
 }

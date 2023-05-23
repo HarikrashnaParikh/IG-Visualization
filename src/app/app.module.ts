@@ -7,6 +7,7 @@ import {OrganizationChartModule} from 'primeng/organizationchart'
 import { GraphComponent } from './graph/graph.component';
 import {HttpClientModule} from '@angular/common/http';
 import { UploadFileComponent } from './upload-file/upload-file.component'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { UploadFileComponent } from './upload-file/upload-file.component'
     UploadFileComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
