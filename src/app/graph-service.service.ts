@@ -34,6 +34,9 @@ export class GraphServiceService {
 
   getStructureMapByID(activityDefinitionId: any){
     return this.httpClient.get(`${this.url}/structureMap/`+activityDefinitionId);
-
+  }
+  
+  getTargetById(activityDefinitionId: any){
+    return this.httpClient.get(`${this.url}/targetFromStructureMap/`+activityDefinitionId);
   }
 }

@@ -21,24 +21,25 @@ export class UploadFileComponent {
     //   (response) => console.log(response),
     //   (error) => console.log(error)
     // );
+    
     if (this.file) {
       const formData: FormData = new FormData();
       formData.append('bundle', this.file, this.file.name);
 
       this.http.post('http://localhost:8080/file-upload', formData)
         .subscribe(
-          () => {
-            console.log('File uploaded successfully');
+          (response) => {
+            console.log(response);
             // Handle success message or redirect to another page
           },
           (error) => {
             console.error('Error occurred during file upload:', error);
             // Handle error message or display an error alert
           }
-        );
+          );
+          this.router.navigate(['/visualization']);
     }
 
-    this.router.navigate(['/visualization']);
   }
   onFileSelected(event: any) {
     this.file = event.target.files[0];
