@@ -1,3 +1,6 @@
+#graph1{
+  zoom: 25%;
+}
 /* .container {
     -webkit-transform: rotate(270deg);
     -moz-transform: rotate(270deg);
@@ -5,3 +8,35 @@
     -ms-transform: rotate(270deg);
     transform: rotate(270deg);
 } */
+
+/* Custom styles for the graph component */
+/* .plan-definition {
+    background-color: indigo;
+    color: white;
+  }
+  
+  .action {
+    background-color: blue;
+    color: white;
+  }
+  
+  .activity-definition {
+    background-color: green;
+    color: white;
+  }
+  
+  .questionnaire {
+    background-color: yellow;
+    color: black;
+  }
+  
+  .structure-map {
+    background-color: purple;
+    color: white;
+  }
+  
+  .target {
+    background-color: orange;
+    color: black;
+  } */
+  

@@ -1,7 +1,5 @@
 <h1>Implementation Guide</h1>
-
-<div class="container">
-<p-organizationChart [value]="data">
+<p-organizationChart id="graph1" [value]="data">
     <ng-template let-node pTemplate="person" >
     <div class="p-1 text-center ">
       <!-- <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" /> -->
@@ -14,20 +12,42 @@
     </div>
   </ng-template>
 </p-organizationChart>
-</div>
+
 <h1>Hello this is backend data object</h1>
 <!-- <h2>{{posts}}</h2>   -->
 
 <ul>
-  <li *ngFor="let action of allActions" class="list-group-item">
-    Action Id :
-    {{ action.id }}
-    <br />
-    Description :
+    Action :
+    {{ actions.length }}
+    <hr />
+    Activity Definition :
+    {{ad.length}}
+    <hr />
+    Questionnaire :
+    {{questionnaire.length}}
+    <hr />
+    Structure Map :
+    {{structureMap.length}}
+    <hr />
+    Targets of Structure Map
+    <hr />
+    Structure Definition :
+    {{structureDefinition.length}}
+    <hr />
+    Library :
+    {{library.length}}
+    <hr />
+    Value Set :
+    {{valueSet.length}}
+    <hr />
+    Code System :
+    {{code.length}}
+    
+    
+    <!-- Description :
     {{ action.description }}
     <br />
     DefinitionCanonical :
-    {{ action.definitionCanonical }}
-    <hr />
-  </li>
+    {{ action.definitionCanonical }} -->
 </ul>
+
