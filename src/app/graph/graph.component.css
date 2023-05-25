@@ -1,6 +1,11 @@
 #graph1{
   zoom: 25%;
 }
+.graph{
+  background: white;
+  width: 97%;
+  height: 580px;
+}
 /* .container {
     -webkit-transform: rotate(270deg);
     -moz-transform: rotate(270deg);
@@ -14,29 +19,28 @@
     background-color: indigo;
     color: white;
   }
-  
+
   .action {
     background-color: blue;
     color: white;
   }
-  
+
   .activity-definition {
     background-color: green;
     color: white;
   }
-  
+
   .questionnaire {
     background-color: yellow;
     color: black;
   }
-  
+
   .structure-map {
     background-color: purple;
     color: white;
   }
-  
+
   .target {
     background-color: orange;
     color: black;
   } */
-  

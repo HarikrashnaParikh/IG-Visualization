@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { GraphServiceService } from './graph-service.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  inHome!: boolean
+  constructor(private graphService: GraphServiceService){
+    if(window.location.href.includes('home')){
+      graphService.inHome.next(true)
+    }
+    this.graphService.inHome.subscribe(value => this.inHome = value)
+  }
   title = 'IGVisualization-UI';
-  
+
+
 }
