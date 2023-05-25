@@ -1,5 +1,16 @@
 #graph1{
-  zoom: 25%;
+  zoom: 70%;
+}
+:root {
+  --bg-primary: #CCCCFF;
+}
+
+.hw{
+  height: 100vh;
+  /* width: 100%; */
+}
+.overflow-x-auto{
+  overflow-x: auto;
 }
 /* .container {
     -webkit-transform: rotate(270deg);
