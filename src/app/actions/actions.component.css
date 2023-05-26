@@ -9,6 +9,9 @@
   border-right: 1px solid black;
   float: left;
 }
+.left li{
+  cursor: pointer;
+}
 .right {
   width: 80%;
   float: left;

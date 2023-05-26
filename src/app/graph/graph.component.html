@@ -1,4 +1,8 @@
-<div class="btn-toolbar flex-row-reverse" role="toolbar" aria-label="Toolbar with button groups">
+<div
+  class="btn-toolbar flex-row-reverse"
+  role="toolbar"
+  aria-label="Toolbar with button groups"
+>
   <div class="btn-group me-2 p-1" role="group" aria-label="First group">
     <button type="button" class="btn btn-secondary">1.5x</button>
   </div>
@@ -9,20 +13,22 @@
     <button type="button" class="btn btn-secondary">0.5x</button>
   </div>
 </div>
-<div class="shadow mx-auto p-2  bg-body rounded card d-flex ScrollStyle">
-  <p-organizationChart id="graph1" [value]="data">
-    <ng-template let-node pTemplate="person">
-      <div class="p-1 text-center">
-        <!-- <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" /> -->
-        <div class="font-bold">{{ node.data.name }}</div>
-        <hr />
-        <div class="font-bold">Id : {{ node.data.id }}</div>
-        <!-- <div>Description : {{ node.data.description }}</div>
+<div class="shadow p-3  bg-body rounded">
+  <div class="shadow mx-auto p-2 bg-body rounded card d-flex ScrollStyle">
+    <p-organizationChart id="graph1" [value]="data">
+      <ng-template let-node pTemplate="person">
+        <div class="p-1 text-center">
+          <!-- <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" /> -->
+          <div class="font-bold">{{ node.data.name }}</div>
+          <hr />
+          <div class="font-bold">Id : {{ node.data.id }}</div>
+          <!-- <div>Description : {{ node.data.description }}</div>
         <br>
         <div>Definition Canonical: {{ node.data.definitionCanonical }}</div> -->
-      </div>
-    </ng-template>
-  </p-organizationChart>
+        </div>
+      </ng-template>
+    </p-organizationChart>
+  </div>
 </div>
 <!-- <h1>Hello this is backend data object</h1>
 
