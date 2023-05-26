@@ -66,11 +66,23 @@ export class GraphServiceService {
     return this.httpClient.get(`${this.url}/library`);
   }
 
+  getLibraryById(id: String){
+    return this.httpClient.get(`${this.url}/library/${id}`);
+  }
+
   getValueSet(){
     return this.httpClient.get(`${this.url}/valueSet`);
   }
 
+  getValueSetById(id: String){
+    return this.httpClient.get(`${this.url}/valueSet/${id}`);
+  }
+
   getCode(){
     return this.httpClient.get(`${this.url}/code`);
+  }
+
+  getCodeById(id: String){
+    return this.httpClient.get(`${this.url}/code/${id}`);
   }
 }

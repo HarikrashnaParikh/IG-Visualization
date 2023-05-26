@@ -1,0 +1,17 @@
+<div class="float-container">
+
+  <div class="left p-2">
+    <ul class="list-group">
+    <li class="list-group-item" *ngFor="let value of valueSet;"><a (click)="openAction(value.resource.id)">{{value.resource.id}}</a></li>
+  </ul>
+
+</div>
+<div class="right p-2">
+  <div class="json-data p-2 mx-auto">
+    <div *ngIf="currentValueSet">
+      <pre>{{currentValueSet | json}}</pre>
+    </div>
+  </div>
+</div>
+
+</div>

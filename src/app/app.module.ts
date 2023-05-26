@@ -15,6 +15,9 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 import { StructureMapComponent } from './structure-map/structure-map.component';
 import { TargetsComponent } from './targets/targets.component';
 import { StructureDefinitionComponent } from './structure-definition/structure-definition.component';
+import { LibraryComponent } from './library/library.component';
+import { ValueSetComponent } from './value-set/value-set.component';
+import { CodeSystemComponent } from './code-system/code-system.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { StructureDefinitionComponent } from './structure-definition/structure-d
     QuestionnaireComponent,
     StructureMapComponent,
     TargetsComponent,
-    StructureDefinitionComponent
+    StructureDefinitionComponent,
+    LibraryComponent,
+    ValueSetComponent,
+    CodeSystemComponent
   ],
   imports: [
     FormsModule,
