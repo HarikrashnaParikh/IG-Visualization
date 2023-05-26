@@ -26,3 +26,7 @@ body{
   /* background: lightgray */
   background: #d5d5d5;
 }
+.blue{
+    background-color: aqua;
+    color: black;
+}

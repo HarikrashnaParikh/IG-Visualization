@@ -1,10 +1,21 @@
-<div class="graph mx-auto mt-4 p-2">
-  <p-organizationChart id="graph1"  [value]="data">
-      <ng-template let-node pTemplate="person" >
-      <div class="p-1 text-center ">
+<div class="btn-toolbar flex-row-reverse" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group me-2 p-1" role="group" aria-label="First group">
+    <button type="button" class="btn btn-secondary">1.5x</button>
+  </div>
+  <div class="btn-group me-2 p-1" role="group" aria-label="Second group">
+    <button type="button" class="btn btn-secondary">1x</button>
+  </div>
+  <div class="btn-group me-2 p-1" role="group" aria-label="Third group">
+    <button type="button" class="btn btn-secondary">0.5x</button>
+  </div>
+</div>
+<div class="shadow mx-auto p-2  bg-body rounded card d-flex ScrollStyle">
+  <p-organizationChart id="graph1" [value]="data">
+    <ng-template let-node pTemplate="person">
+      <div class="p-1 text-center">
         <!-- <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" /> -->
         <div class="font-bold">{{ node.data.name }}</div>
-        <hr>
+        <hr />
         <div class="font-bold">Id : {{ node.data.id }}</div>
         <!-- <div>Description : {{ node.data.description }}</div>
         <br>
@@ -13,7 +24,6 @@
     </ng-template>
   </p-organizationChart>
 </div>
-
 <!-- <h1>Hello this is backend data object</h1>
 
 <ul>
@@ -43,5 +53,4 @@
     Code System :
     {{code.length}}
 
-</ul>
- -->
+</ul> -->
