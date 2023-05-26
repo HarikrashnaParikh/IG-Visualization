@@ -1,0 +1,28 @@
+import { Component } from '@angular/core';
+import { GraphServiceService } from '../graph-service.service';
+
+@Component({
+  selector: 'app-targets',
+  templateUrl: './targets.component.html',
+  styleUrls: ['./targets.component.css']
+})
+export class TargetsComponent {
+  structureMap: any;
+  currentTarget: any;
+  constructor(private graphService: GraphServiceService) {}
+
+  ngOnInit(): void {
+    this.graphService.getStructureMap().subscribe((structureMap) => {
+      this.structureMap = structureMap;
+      console.log(this.structureMap);
+
+    });
+  }
+
+  openAction(id: String) {
+    this.graphService.getTargetById(id).subscribe((target) => {
+      this.currentTarget = JSON.parse(JSON.stringify(target))
+    });
+
+  }
+}

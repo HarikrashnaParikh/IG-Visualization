@@ -30,9 +30,11 @@ export class UploadFileComponent {
             console.log("ABC");
             console.error('Error occurred during file upload:', error);
             // Handle error message or display an error alert
+          },complete:()=>{
+
+            this.router.navigate(['planDefinition']);
           }
         });
-        this.router.navigate(['planDefinition']);
     }
 
   }

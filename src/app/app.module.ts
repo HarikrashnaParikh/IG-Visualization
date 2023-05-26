@@ -10,6 +10,11 @@ import { UploadFileComponent } from './upload-file/upload-file.component'
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ActionsComponent } from './actions/actions.component';
+import { ActionDefinitionComponent } from './action-definition/action-definition.component';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { StructureMapComponent } from './structure-map/structure-map.component';
+import { TargetsComponent } from './targets/targets.component';
+import { StructureDefinitionComponent } from './structure-definition/structure-definition.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { ActionsComponent } from './actions/actions.component';
     GraphComponent,
     UploadFileComponent,
     NavbarComponent,
-    ActionsComponent
+    ActionsComponent,
+    ActionDefinitionComponent,
+    QuestionnaireComponent,
+    StructureMapComponent,
+    TargetsComponent,
+    StructureDefinitionComponent
   ],
   imports: [
     FormsModule,

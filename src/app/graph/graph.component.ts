@@ -71,9 +71,9 @@ export class GraphComponent implements OnInit {
             const activityDefinition$ =
               this.graphService.getActivityDefinitionById(activityDefinitionId);
             const questionnaire$ =
-              this.graphService.getQuestionnaireByID(activityDefinitionId);
+              this.graphService.getQuestionnaireById(activityDefinitionId);
             const structureMap$ =
-              this.graphService.getStructureMapByID(activityDefinitionId);
+              this.graphService.getStructureMapById(activityDefinitionId);
             const target$ =
               this.graphService.getTargetById(activityDefinitionId);
 

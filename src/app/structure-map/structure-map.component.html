@@ -1,0 +1,17 @@
+<div class="float-container">
+
+  <div class="left p-2">
+    <ul class="list-group">
+    <li class="list-group-item" *ngFor="let sm of structureMap;"><a (click)="openAction(sm.resource.id)">{{sm.resource.id}}</a></li>
+  </ul>
+
+</div>
+<div class="right p-2">
+  <div class="json-data p-2 mx-auto">
+    <div *ngIf="currentStructureMap">
+      <pre>{{currentStructureMap | json}}</pre>
+    </div>
+  </div>
+</div>
+
+</div>

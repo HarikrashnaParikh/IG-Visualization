@@ -22,6 +22,10 @@ export class GraphServiceService {
     return this.httpClient.get(`${this.url}/planDefinition/actions`);
   }
 
+  getActionById(id: String){
+    return this.httpClient.get(`${this.url}/planDefinition/actions/${id}`)
+  }
+
   getActivityDefinition(){
     return this.httpClient.get(`${this.url}/activityDefinition`);
   }
@@ -35,7 +39,7 @@ export class GraphServiceService {
     return this.httpClient.get(`${this.url}/questionnaire`);
   }
 
-  getQuestionnaireByID(activityDefinitionId: any){
+  getQuestionnaireById(activityDefinitionId: any){
     return this.httpClient.get(`${this.url}/questionnaire/`+activityDefinitionId);
   }
 
@@ -43,7 +47,7 @@ export class GraphServiceService {
     return this.httpClient.get(`${this.url}/structureMap`);
   }
 
-  getStructureMapByID(activityDefinitionId: any){
+  getStructureMapById(activityDefinitionId: any){
     return this.httpClient.get(`${this.url}/structureMap/`+activityDefinitionId);
   }
 
@@ -55,6 +59,9 @@ export class GraphServiceService {
     return this.httpClient.get(`${this.url}/structureDefinition`);
   }
 
+  getStructureDefinitionById(id: String){
+    return this.httpClient.get(`${this.url}/structureDefinition/${id}`);
+  }
   getLibrary(){
     return this.httpClient.get(`${this.url}/library`);
   }
