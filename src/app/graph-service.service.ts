@@ -1,17 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GraphServiceService {
 
-  private url = 'http://localhost:8080'; 
+  private url = 'http://localhost:8080';
+  inHome = new BehaviorSubject<boolean>(false)
+  // inHome:boolean=false
   // activityDefinitionId : any;
 
   constructor(private httpClient: HttpClient) {}
 
-  getPlanDefinition(){  
+  getPlanDefinition(){
     return this.httpClient.get(`${this.url}/planDefinition`);
   }
 
@@ -24,7 +27,7 @@ export class GraphServiceService {
   }
 
   getActivityDefinitionById(activityDefinitionId: any){
-    
+
     return this.httpClient.get(`${this.url}/activityDefinition/`+activityDefinitionId);
   }
 
@@ -39,14 +42,14 @@ export class GraphServiceService {
   getStructureMap(){
     return this.httpClient.get(`${this.url}/structureMap`);
   }
-  
+
   getStructureMapByID(activityDefinitionId: any){
     return this.httpClient.get(`${this.url}/structureMap/`+activityDefinitionId);
   }
-  
+
   getTargetById(activityDefinitionId: any){
     return this.httpClient.get(`${this.url}/targetFromStructureMap/`+activityDefinitionId);
-  }  
+  }
 
   getStructureDefinition(){
     return this.httpClient.get(`${this.url}/structureDefinition`);

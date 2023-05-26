@@ -1,23 +1,20 @@
-<h1>Implementation Guide</h1>
-<div class="shadow p-3 bg-body rounded card d-flex justify-content-center overflow-x-auto">
-  
-<p-organizationChart id="graph1" [value]="data">
-    <ng-template let-node pTemplate="person" >
-    <div class="p-1 text-center ">
-      <!-- <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" /> -->
-      <div class="font-bold">{{ node.data.name }}</div>
-      <hr>
-      <div class="font-bold">Id : {{ node.data.id }}</div>
-      <!-- <div>Description : {{ node.data.description }}</div>
-      <br>
-      <div>Definition Canonical: {{ node.data.definitionCanonical }}</div> -->
-    </div>
-  </ng-template>
-</p-organizationChart>
+<div class="graph mx-auto mt-4 p-2">
+  <p-organizationChart id="graph1"  [value]="data">
+      <ng-template let-node pTemplate="person" >
+      <div class="p-1 text-center ">
+        <!-- <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" /> -->
+        <div class="font-bold">{{ node.data.name }}</div>
+        <hr>
+        <div class="font-bold">Id : {{ node.data.id }}</div>
+        <!-- <div>Description : {{ node.data.description }}</div>
+        <br>
+        <div>Definition Canonical: {{ node.data.definitionCanonical }}</div> -->
+      </div>
+    </ng-template>
+  </p-organizationChart>
 </div>
 
-<h1>Hello this is backend data object</h1>
-<!-- <h2>{{posts}}</h2>   -->
+<!-- <h1>Hello this is backend data object</h1>
 
 <ul>
     Action :
@@ -45,12 +42,6 @@
     <hr />
     Code System :
     {{code.length}}
-    
-    
-    <!-- Description :
-    {{ action.description }}
-    <br />
-    DefinitionCanonical :
-    {{ action.definitionCanonical }} -->
-</ul>
 
+</ul>
+ -->

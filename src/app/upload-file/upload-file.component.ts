@@ -17,7 +17,7 @@ export class UploadFileComponent {
     if (this.file) {
       const formData: FormData = new FormData();
       console.log(formData);
-      
+
       formData.append('bundle', this.file, this.file.name);
       console.log(formData);
 
@@ -32,11 +32,11 @@ export class UploadFileComponent {
             // Handle error message or display an error alert
           }
         });
-        this.router.navigate(['/visualization']);
+        this.router.navigate(['planDefinition']);
     }
 
   }
   onFileSelected(event: any) {
     this.file = event.target.files[0];
-  } 
+  }
 }
