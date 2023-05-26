@@ -32,7 +32,7 @@ export class UploadFileComponent {
             // Handle error message or display an error alert
           }
         });
-        this.router.navigate(['/planDefinition']);
+        this.router.navigate(['planDefinition']);
     }
 
   }

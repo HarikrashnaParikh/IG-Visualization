@@ -9,6 +9,7 @@ export class GraphServiceService {
 
   private url = 'http://localhost:8080';
   inHome = new BehaviorSubject<boolean>(false)
+  // inHome:boolean=false
   // activityDefinitionId : any;
 
   constructor(private httpClient: HttpClient) {}

@@ -6,11 +6,11 @@ import { GraphComponent } from './graph/graph.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
-  },
+    {
+      path: '',
+      redirectTo: 'home',
+      pathMatch: 'full',
+    },
   { path: 'home', component: UploadFileComponent },
   { path: 'planDefinition', component: GraphComponent },
   {path: 'actions', component: ActionsComponent}
