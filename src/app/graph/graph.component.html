@@ -1,19 +1,18 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 <div
   class="btn-toolbar flex-row-reverse"
   role="toolbar"
   aria-label="Toolbar with button groups"
 >
   <div class="btn-group me-2 p-1" role="group" aria-label="First group">
-    <button type="button" class="btn btn-secondary">1.5x</button>
-  </div>
+    <a class="btn zoom-init"><i class="fas fa-recycle" (click)="resetZoom()"></i></a>  </div>
   <div class="btn-group me-2 p-1" role="group" aria-label="Second group">
-    <button type="button" class="btn btn-secondary">1x</button>
-  </div>
+    <a class="btn zoom"><i class="fas fa-search-plus" (click)="zoomIn()"></i></a>  </div>
   <div class="btn-group me-2 p-1" role="group" aria-label="Third group">
-    <button type="button" class="btn btn-secondary">0.5x</button>
+    <a class="btn zoom-out"><i class="fas fa-search-minus" (click)="zoomOut()"></i></a>
   </div>
 </div>
-<div class="shadow p-3  bg-body rounded">
+<!-- <div class="shadow p-3  bg-body rounded"> -->
   <div class="shadow mx-auto p-2 bg-body rounded card d-flex ScrollStyle">
     <p-organizationChart id="graph1" [value]="data">
       <ng-template let-node pTemplate="person">
@@ -29,4 +28,4 @@
       </ng-template>
     </p-organizationChart>
   </div>
-</div>
+<!-- </div>  -->

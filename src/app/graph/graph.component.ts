@@ -14,7 +14,7 @@ export class GraphComponent implements OnInit {
   actions: any = [];
   ad: any = [];
   questionnaire: any = [];
-  structureMap: any =[];
+  structureMap: any = [];
   structureDefinition: any = [];
   library: any = [];
   valueSet: any = [];
@@ -158,33 +158,34 @@ export class GraphComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+  resetZoom() {
+    const graphElement = document.getElementById('graph1');
+    if (graphElement) {
+      graphElement.style.transform = 'scale(1)';
+    }
+  }
 
-    this.graphService.getActivityDefinition().subscribe((response: any) => {
-      this.ad = response; // Handle the response
-    });
-
-    this.graphService.getQuestionnaire().subscribe((response: any) => {
-      this.questionnaire = response; // Handle the response
-    });
-
-    this.graphService.getStructureMap().subscribe((response: any) => {
-      this.structureMap = response; // Handle the response
-    });
-
-    this.graphService.getStructureDefinition().subscribe((response: any) => {
-      this.structureDefinition = response; // Handle the response
-    });
-
-    this.graphService.getLibrary().subscribe((response: any) => {
-      this.library = response; // Handle the response
-    });
-
-    this.graphService.getValueSet().subscribe((response: any) => {
-      this.valueSet = response; // Handle the response
-    });
-
-    this.graphService.getCode().subscribe((response: any) => {
-      this.code = response; // Handle the response
-    });
+  zoomOut() {
+    const graphElement = document.getElementById('graph1');
+    if (graphElement) {
+      const currentTransform = graphElement.style.transform;
+      const currentScale = parseFloat(
+        currentTransform ? currentTransform.replace(/[^\d.-]/g, '') : '1'
+      );
+      const newScale = currentScale - currentScale / 10;
+      graphElement.style.transform = `scale(${newScale})`;
+    }
+  }
+  zoomIn() {
+    const graphElement = document.getElementById('graph1');
+    if (graphElement) {
+      const currentTransform = graphElement.style.transform;
+      const currentScale = parseFloat(
+        currentTransform ? currentTransform.replace(/[^\d.-]/g, '') : '1'
+      );
+      const newScale = currentScale + currentScale / 10;
+      graphElement.style.transform = `scale(${newScale})`;
+    }
   }
 }
