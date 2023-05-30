@@ -12,4 +12,8 @@
 
 }
 
-  
+button {
+  background-color: #2d6a4f;
+  transition: all 1s;
+}
+

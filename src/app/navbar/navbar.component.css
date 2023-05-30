@@ -1,3 +1,23 @@
 .active{
-  background-color: rgb(129, 128, 128);
+  background-color: #2d6a4f;
+  color:  white;
+  border-radius: 10px;
+}
+
+li {
+  border-radius: 10px;
+}
+.nav-link.active{
+  color: white;
+}
+
+.nav-link{
+  transition: all .5s ease-in-out;
+}
+
+.nav-link:hover{
+  color: white;
+  background-color: #40916c;
+  border-radius: 10px;
+  transform: scale(1.1);
 }
