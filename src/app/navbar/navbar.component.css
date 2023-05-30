@@ -1,14 +1,13 @@
-.active{
+li {
+  border-radius: 10px;
+  height: 80px;
+  width: 125px;
+}
+.nav-link.active{
   background-color: #2d6a4f;
   color:  white;
   border-radius: 10px;
-}
-
-li {
-  border-radius: 10px;
-}
-.nav-link.active{
-  color: white;
+  height: 5rem;
 }
 
 .nav-link{
@@ -20,4 +19,9 @@ li {
   background-color: #40916c;
   border-radius: 10px;
   transform: scale(1.1);
+  height: 5rem;
+}
+a {
+  text-align:center;
+  padding: 5px;
 }
