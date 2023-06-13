@@ -1,5 +1,14 @@
-#graph1{
+#graph1 {
   zoom: 60%;
+  transform-origin: top left;
+  /* height: 100%; Ensure the container takes full height */
+  /* overflow: hidden; Hide any content that exceeds the container */
+}
+
+.p-organizationChart {
+  /* height: 100%; Make the chart take full height */
+  height: calc(100% - 50px); 
+  overflow-y: scroll; /* Enable vertical scrolling for the chart */
 }
 .overflow-x-auto{
   overflow-x: auto;
