@@ -10,13 +10,12 @@
   height: calc(100% - 50px); 
   overflow-y: scroll; /* Enable vertical scrolling for the chart */
 }
-.overflow-x-auto{
-  overflow-x: auto;
-}
+
 .ScrollStyle
 {
 
     height: 550px;
+    overflow-x: scroll;
     overflow-y: scroll;
 
 }

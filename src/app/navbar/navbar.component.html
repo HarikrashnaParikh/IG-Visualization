@@ -24,7 +24,7 @@
         <img class="logo" src="../../assets/images/logo-white.png" alt="white-logo"/>
     </a>
     <h3>Implementation Guide </h3>
-    <button type="button" class="btn back-btn">Back</button>
+    <button type="button" class="btn back-btn" (click)  ="backToHome()">Back</button>
 </header>
 
 <div class="main-content">
@@ -37,162 +37,66 @@
   <ul class="nav nav-tabs " id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
           <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-              type="button" role="tab" aria-controls="home" aria-selected="true">Plan Definition</button>
+              type="button" role="tab" aria-controls="home" aria-selected="true"  routerLinkActive="active"
+              routerLink="planDefinition">Plan Definition</button>
       </li>
       <li class="nav-item" role="presentation">
           <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-              type="button" role="tab" aria-controls="profile" aria-selected="false">Actions
-              <span class="digit">12</span>
+              type="button" role="tab" aria-controls="profile" aria-selected="false" routerLinkActive="active"
+              routerLink="actions"  >Actions
+              <span class="digit">{{actions.length}}</span>
           </button>
       </li>
       <li class="nav-item" role="presentation">
           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-              type="button" role="tab" aria-controls="contact" aria-selected="false">Activity
-              Definition<span class="digit">18</span></button>
+              type="button" role="tab" aria-controls="contact" aria-selected="false" routerLinkActive="active"
+              routerLink="activityDefinition">Activity
+              Definition<span class="digit">{{ad.length}}</span></button>
       </li>
       <li class="nav-item" role="presentation">
           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-              type="button" role="tab" aria-controls="contact" aria-selected="false">Activity
-              Questionnaire<span class="digit">18</span></button>
+              type="button" role="tab" aria-controls="contact" aria-selected="false"  routerLinkActive="active"
+              routerLink="questionnaire">Activity
+              Questionnaire<span class="digit">{{questionnaire.length}}</span></button>
       </li>
       <li class="nav-item" role="presentation">
           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-              type="button" role="tab" aria-controls="contact" aria-selected="false">Structure Map<span
-                  class="digit">18</span></button>
+              type="button" role="tab" aria-controls="contact" aria-selected="false"      routerLinkActive="active"
+              routerLink="structureMap">Structure Map<span
+                  class="digit">{{structureMap.length}}</span></button>
       </li>
       <li class="nav-item" role="presentation">
           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-              type="button" role="tab" aria-controls="contact" aria-selected="false">Target from structure
+              type="button" role="tab" aria-controls="contact" aria-selected="false"    routerLinkActive="active"
+              routerLink="targets">Target from structure
               map</button>
       </li>
       <li class="nav-item" role="presentation">
           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-              type="button" role="tab" aria-controls="contact" aria-selected="false">Structure
-              Definition<span class="digit">18</span></button>
+              type="button" role="tab" aria-controls="contact" aria-selected="false" routerLinkActive="active"
+              routerLink="structureDefinition">Structure
+              Definition<span class="digit">{{structureDefinition.length}}</span></button>
       </li>
       <li class="nav-item" role="presentation">
           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-              type="button" role="tab" aria-controls="contact" aria-selected="false">Library<span
-                  class="digit">23</span></button>
+              type="button" role="tab" aria-controls="contact" aria-selected="false" routerLinkActive="active"
+              routerLink="library">Library<span
+                  class="digit">{{library.length}}</span></button>
       </li>
       <li class="nav-item" role="presentation">
           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-              type="button" role="tab" aria-controls="contact" aria-selected="false">Value Set<span
-                  class="digit">50</span></button>
+              type="button" role="tab" aria-controls="contact" aria-selected="false"       routerLinkActive="active"
+              routerLink="valueSet">Value Set<span
+                  class="digit">{{valueSet.length}}</span></button>
       </li>
       <li class="nav-item" role="presentation">
           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-              type="button" role="tab" aria-controls="contact" aria-selected="false">Code System<span
-                  class="digit">406</span></button>
+              type="button" role="tab" aria-controls="contact" aria-selected="false"     routerLinkActive="active"
+              routerLink="codeSystem">Code System<span
+                  class="digit">{{code.length}}</span></button>
       </li>
   </ul>
 </div>
 </div>
-
-  
-  
-  <!-- <div
-  class="ps-3 mt-2 border-bottom border-dark pb-2 d-flex justify-content-between"
-  >
-  <h3>Implementation Guide</h3>
-  <button class="me-2" (click)  ="backToHome()">Home Page File Upload</button>
-</div> -->
-<!-- <nav class="navbar navbar-expand-lg pb-3 mt-2 me-2 border-bottom border-dark">
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="ms-4">
-        <a
-        class="nav-link"
-        aria-current="page"
-        routerLinkActive="active"
-        routerLink="planDefinition"
-        >Plan<br>Definition</a
-        >
-      </li>
-      <li class="ms-4">
-        <a
-        class="nav-link"
-        aria-current="page"
-        routerLinkActive="active"
-        routerLink="actions"
-        >{{actions.length}}<br>Actions</a
-        >
-      </li>
-      <li class="ms-4">
-        <a
-        class="nav-link"
-        aria-current="page"
-        routerLinkActive="active"
-        routerLink="activityDefinition"
-        >{{ad.length}}<br>Activity Definition</a
-          >
-        </li>
-        <li class="ms-4">
-          <a
-          class="nav-link"
-          aria-current="page"
-          routerLinkActive="active"
-          routerLink="questionnaire"
-          >{{questionnaire.length}}<br>Questionnaire</a
-          >
-        </li>
-        <li class="ms-4">
-          <a
-          class="nav-link"
-          aria-current="page"
-          routerLinkActive="active"
-          routerLink="structureMap"
-          >{{structureMap.length}}<br>Structure Map</a
-          >
-        </li>
-        <li class="ms-4">
-          <a
-          class="nav-link"
-          aria-current="page"
-          routerLinkActive="active"
-          routerLink="targets"
-          >Target From<br>Structure Map</a
-          >
-        </li>
-        <li class="ms-4">
-          <a
-          class="nav-link"
-          aria-current="page"
-          routerLinkActive="active"
-          routerLink="structureDefinition"
-          >{{structureDefinition.length}}<br>Structure Definition</a
-          >
-        </li>
-        <li class="ms-4">
-          <a
-          class="nav-link"
-          aria-current="page"
-          routerLinkActive="active"
-          routerLink="library"
-          >{{library.length}}<br>Library</a
-          >
-        </li>
-        <li class="ms-4">
-          <a
-          class="nav-link"
-          aria-current="page"
-          routerLinkActive="active"
-          routerLink="valueSet"
-          >{{valueSet.length}}<br>Value Set</a
-          >
-        </li>
-        <li class="ms-4">
-          <a
-          class="nav-link"
-          aria-current="page"
-          routerLinkActive="active"
-          routerLink="codeSystem"
-          >{{code.length}}<br>Code System</a
-          >
-        </li>
-      </ul>
-    </div>
-  </nav> -->
-  
 </body>
 </html>
