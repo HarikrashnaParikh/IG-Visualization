@@ -57,12 +57,11 @@
           <div class="upload-box">
             <img src="assets/images/fileupload.png" />
             <div
-            style="margin-top: 10rem;"
             (drop)="onFileDrop($event)"
             (dragover)="onDragOver($event)"
             (dragleave)="onDragLeave($event)"
             >
-            <div
+            <div 
             class="shadow-lg p-3 mb-5 bg-body rounded"
             [ngClass]="{ dragover: isDragOver }"
             >

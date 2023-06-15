@@ -26,3 +26,6 @@ button {
   transition: all 1s;
 }
 
+.btn-toolbar{
+  flex-wrap: nowrap;
+}
