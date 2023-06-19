@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GraphServiceService } from '../graph-service.service';
+import { compileNgModule } from '@angular/compiler';
 
 @Component({
   selector: 'app-action-definition',
@@ -8,7 +9,8 @@ import { GraphServiceService } from '../graph-service.service';
 })
 export class ActionDefinitionComponent {
   activityDefinition: any;
-  currentActivityDefinition: any;
+  currentActivityDefinition: any ;
+
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
@@ -20,8 +22,14 @@ export class ActionDefinitionComponent {
   }
 
   openAction(id: String) {
+    console.log("Clicking");
+    
     this.graphService.getActivityDefinitionById(id).subscribe((ad) => {
+      console.log(ad);
+      
       this.currentActivityDefinition = JSON.parse(JSON.stringify(ad))
+      console.log(this.currentActivityDefinition);
+      
     });
 
   }

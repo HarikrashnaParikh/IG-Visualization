@@ -1,6 +1,10 @@
 body {
   margin: 0;
   font-family: 'Source Sans Pro', sans-serif;
+  overflow-y: auto;
+}
+.body{
+  height: 100vh;
 }
 
 /* leftside upload page */
@@ -420,4 +424,12 @@ color: #3C434B;
 .action-list li.active{
   background: #F4F5F7;
   border-left: 3px solid #E4203B;
+}
+
+/* scrolling y axis in div */
+.ScrollStyle
+{
+
+    overflow-y: scroll;
+
 }
