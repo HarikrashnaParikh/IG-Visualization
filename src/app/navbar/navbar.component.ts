@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GraphServiceService } from '../graph-service.service';
+import { UploadFileComponent } from '../upload-file/upload-file.component';
 
 @Component({
   selector: 'app-navbar',
@@ -16,12 +17,18 @@ export class NavbarComponent {
   library: any = [];
   valueSet: any = [];
   code: any = [];
+  fileName!: string;
+  nameWithoutExtension!: string;
+  capitalizedFirstName!: string;
   constructor(
     private router: Router,
-    private graphService: GraphServiceService
-  ) {}
-
-  ngOnInit() {
+    private graphService: GraphServiceService,
+    ) {}
+    
+    ngOnInit() {
+    this.fileName = sessionStorage.getItem("fileName")!;
+    this.nameWithoutExtension = this.fileName.split(".")[0]; 
+    this.capitalizedFirstName = this.nameWithoutExtension.charAt(0).toUpperCase() + this.nameWithoutExtension.slice(1);
 
     this.graphService.getActions().subscribe((response: any) => {
       this.actions = response;

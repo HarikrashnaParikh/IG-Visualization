@@ -8,7 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 export class GraphServiceService {
 
   private url = 'http://localhost:8080';
-  inHome = new BehaviorSubject<boolean>(false)
+  
+
+  // inHome = new BehaviorSubject<boolean>(false)
   // inHome:boolean=false
   // activityDefinitionId : any;
 
