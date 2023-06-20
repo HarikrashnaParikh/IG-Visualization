@@ -434,3 +434,27 @@ color: #3C434B;
     height: calc(100vh - 185px) !important;
     /* padding: 0px 8px !important; */
 }
+
+.container {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.left {
+  width: 20%;
+  /* height: 78.5vh; */
+  border-right: 1px solid black;
+  float: left;
+}
+.left li{
+  cursor: pointer;
+}
+.right {
+  width: 80%;
+  float: left;
+}
+.json-data{
+  /* height: 610px; */
+  width: 100%;
+  background-color: white;
+}
