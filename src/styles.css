@@ -431,5 +431,6 @@ color: #3C434B;
 {
 
     overflow-y: scroll;
-
+    height: calc(100vh - 185px) !important;
+    /* padding: 0px 8px !important; */
 }
