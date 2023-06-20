@@ -10,6 +10,7 @@ import { compileNgModule } from '@angular/compiler';
 export class ActionDefinitionComponent {
   activityDefinition: any;
   currentActivityDefinition: any ;
+  selectedId: any;
 
   constructor(private graphService: GraphServiceService) {}
 
@@ -21,15 +22,10 @@ export class ActionDefinitionComponent {
     });
   }
 
-  openAction(id: String) {
-    console.log("Clicking");
-    
-    this.graphService.getActivityDefinitionById(id).subscribe((ad) => {
-      console.log(ad);
-      
-      this.currentActivityDefinition = JSON.parse(JSON.stringify(ad))
-      console.log(this.currentActivityDefinition);
-      
+  openAction(id: String) {    
+    this.selectedId = id;
+    this.graphService.getActivityDefinitionById(id).subscribe((ad) => {      
+      this.currentActivityDefinition = JSON.parse(JSON.stringify(ad))      
     });
 
   }

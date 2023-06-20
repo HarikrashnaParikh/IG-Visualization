@@ -9,6 +9,7 @@ import { GraphServiceService } from '../graph-service.service';
 export class QuestionnaireComponent {
   questionnaire: any;
   currentQuestionnaire: any;
+  selectedId: any;
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class QuestionnaireComponent {
   }
 
   openAction(id: String) {
+    this.selectedId = id;
     this.graphService.getQuestionnaireById(id).subscribe((questionnaire) => {
       this.currentQuestionnaire = JSON.parse(JSON.stringify(questionnaire))
     });

@@ -2,7 +2,7 @@
 
   <div class="left p-2 ScrollStyle">
     <ul class="list-group">
-    <li class="list-group-item" *ngFor="let value of valueSet;" (click)="openAction(value.resource.id)">
+    <li class="list-group-item" *ngFor="let value of valueSet;" [ngClass]="{ 'tab-active': selectedId === value.resource.id }" (click)="openAction(value.resource.id)">
       <!-- <a (click)="openAction(value.resource.id)"> -->
         {{value.resource.name}}
       <!-- </a> -->

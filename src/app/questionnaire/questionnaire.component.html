@@ -2,7 +2,7 @@
 
   <div class="left p-2 ScrollStyle">
     <ul class="list-group">
-    <li class="list-group-item" *ngFor="let q of questionnaire;" (click)="openAction(q.resource.id)">
+    <li class="list-group-item" *ngFor="let q of questionnaire;" [ngClass]="{ 'tab-active': selectedId === q.resource.id }" (click)="openAction(q.resource.id)">
       <!-- <a (click)="openAction(q.resource.id)"> -->
         {{q.resource.name}}
       <!-- </a> -->

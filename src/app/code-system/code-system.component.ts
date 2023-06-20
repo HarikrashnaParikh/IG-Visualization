@@ -9,6 +9,7 @@ import { GraphServiceService } from '../graph-service.service';
 export class CodeSystemComponent {
   codeSystem: any;
   currentCodeSystem: any;
+  selectedId : any;
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
@@ -19,9 +20,9 @@ export class CodeSystemComponent {
   }
 
   openAction(id: String) {
+    this.selectedId = id;
     this.graphService.getCodeById(id).subscribe((code) => {
       this.currentCodeSystem = JSON.parse(JSON.stringify(code))
-
     });
 
   }

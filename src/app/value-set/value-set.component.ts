@@ -9,6 +9,7 @@ import { GraphServiceService } from '../graph-service.service';
 export class ValueSetComponent {
   valueSet: any;
   currentValueSet: any;
+  selectedId: any;
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
@@ -18,6 +19,7 @@ export class ValueSetComponent {
   }
 
   openAction(id: String) {
+    this.selectedId = id;
     this.graphService.getValueSetById(id).subscribe((valueSet) => {
       this.currentValueSet = JSON.parse(JSON.stringify(valueSet))
     });

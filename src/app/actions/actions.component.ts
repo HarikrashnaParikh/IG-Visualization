@@ -9,6 +9,8 @@ import { GraphServiceService } from '../graph-service.service';
 export class ActionsComponent implements OnInit {
   actions: any;
   currentAction: any;
+  selectedId: any;
+
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
@@ -17,12 +19,11 @@ export class ActionsComponent implements OnInit {
     });
   }
 
-  openAction(id: String) {
-    this.graphService.getActionById(id).subscribe((action) => {
-      this.currentAction = JSON.parse(JSON.stringify(action))
+  openAction(action: any) {
+    this.selectedId = action;
+    this.graphService.getActionById(action).subscribe((actionData) => {
+      // Handle action retrieval
+      this.currentAction = JSON.parse(JSON.stringify(actionData));
     });
-
   }
-
-
 }

@@ -9,6 +9,7 @@ import { GraphServiceService } from '../graph-service.service';
 export class StructureMapComponent {
   structureMap: any;
   currentStructureMap: any;
+  selectedId: any;
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class StructureMapComponent {
   }
 
   openAction(id: String) {
+    this.selectedId=id;
     this.graphService.getStructureMapById(id).subscribe((structureMap) => {
       this.currentStructureMap = JSON.parse(JSON.stringify(structureMap))
     });

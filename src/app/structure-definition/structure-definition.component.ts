@@ -9,6 +9,7 @@ import { GraphServiceService } from '../graph-service.service';
 export class StructureDefinitionComponent {
   structureDefinition: any;
   currentStructureDefinition: any;
+  selectedId: any;
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class StructureDefinitionComponent {
   }
 
   openAction(id: String) {
+    this.selectedId = id;
     this.graphService.getStructureDefinitionById(id).subscribe((structureDefinition) => {
       this.currentStructureDefinition = JSON.parse(JSON.stringify(structureDefinition))
     });

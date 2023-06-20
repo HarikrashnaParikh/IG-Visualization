@@ -2,7 +2,7 @@
 
   <div class="left p-2">
     <ul class="list-group">
-    <li class="list-group-item" *ngFor="let sm of structureMap;" (click)="openAction(sm.resource.id)">
+    <li class="list-group-item" *ngFor="let sm of structureMap;" [ngClass]="{ 'tab-active': selectedId === sm.resource.id }" (click)="openAction(sm.resource.id)">
       <!-- <a (click)="openAction(sm.resource.id)"> -->
         {{sm.resource.id}}
       <!-- </a> -->

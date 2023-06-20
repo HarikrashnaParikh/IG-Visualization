@@ -1,6 +1,5 @@
-
-
-.tab-active{
+/* for active tab in particular menu */
+.tab-active {
   background: #e4203b;
   color: #fff;
 }

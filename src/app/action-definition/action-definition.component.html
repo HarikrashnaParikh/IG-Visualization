@@ -2,7 +2,7 @@
 
   <div class="left p-2 ScrollStyle">
     <ul class="list-group">
-    <li class="list-group-item" *ngFor="let ad of activityDefinition;" (click)="openAction(ad.resource.id)">
+    <li class="list-group-item" *ngFor="let ad of activityDefinition;" [ngClass]="{ 'tab-active': selectedId === ad.resource.id }" (click)="openAction(ad.resource.id)">
       <!-- <a (click)="openAction(ad.resource.id)"> -->
         {{ad.resource.useContext?.[0].valueCodeableConcept.coding[0].display}}
       <!-- </a> -->

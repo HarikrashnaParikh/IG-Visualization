@@ -458,3 +458,9 @@ color: #3C434B;
   width: 100%;
   background-color: white;
 }
+
+/* for active tab in particular menu */
+.tab-active {
+  background: #e4203b;
+  color: #fff;
+}

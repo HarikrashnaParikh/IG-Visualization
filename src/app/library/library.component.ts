@@ -9,6 +9,7 @@ import { GraphServiceService } from '../graph-service.service';
 export class LibraryComponent {
   library: any;
   currentLibrary: any;
+  selectedId: any
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
@@ -18,6 +19,7 @@ export class LibraryComponent {
   }
 
   openAction(id: String) {
+    this.selectedId = id;
     this.graphService.getLibraryById(id).subscribe((library) => {
       this.currentLibrary = JSON.parse(JSON.stringify(library))
     });
