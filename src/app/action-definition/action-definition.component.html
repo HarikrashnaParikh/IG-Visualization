@@ -4,7 +4,7 @@
     <ul class="list-group">
     <li class="list-group-item" *ngFor="let ad of activityDefinition;" [ngClass]="{ 'tab-active': selectedId === ad.resource.id }" (click)="openAction(ad.resource.id)">
       <!-- <a (click)="openAction(ad.resource.id)"> -->
-        {{ad.resource.useContext?.[0].valueCodeableConcept.coding[0].display}}
+        {{ad.resource.useContext?.[0].valueCodeableConcept.coding[0].display ? ad.resource.useContext?.[0].valueCodeableConcept.coding[0].display : ad.resource.id}}
       <!-- </a> -->
     </li>
     <!-- <li class="list-group-item" *ngFor="let ad of activityDefinition;"><a (click)="openAction(ad.resource.id)">{{ad.resource.id}}</a></li> -->

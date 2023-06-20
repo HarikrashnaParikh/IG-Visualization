@@ -4,7 +4,7 @@
     <ul class="list-group">
     <li class="list-group-item" *ngFor="let q of questionnaire;" [ngClass]="{ 'tab-active': selectedId === q.resource.id }" (click)="openAction(q.resource.id)">
       <!-- <a (click)="openAction(q.resource.id)"> -->
-        {{q.resource.name}}
+        {{q.resource.title ? q.resource.title : q.resource.name}}
       <!-- </a> -->
     </li>
   </ul>

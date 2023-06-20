@@ -4,7 +4,7 @@
     <ul class="list-group">
     <li class="list-group-item" *ngFor="let sd of structureDefinition;" [ngClass]="{ 'tab-active': selectedId === sd.resource.id }" (click)="openAction(sd.resource.id)">
       <!-- <a (click)="openAction(sd.resource.id)"> -->
-        {{sd.resource.name}}
+        {{sd.resource.title ? sd.resource.title : sd.resource.name }}
       <!-- </a> -->
     </li>
   </ul>
