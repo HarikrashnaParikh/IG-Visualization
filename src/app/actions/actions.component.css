@@ -21,3 +21,8 @@
   width: 100%;
   background-color: white;
 }
+
+.tab-active{
+  background: #e4203b;
+  color: #fff;
+}

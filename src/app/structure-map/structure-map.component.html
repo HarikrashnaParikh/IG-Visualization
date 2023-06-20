@@ -2,7 +2,11 @@
 
   <div class="left p-2 ScrollStyle">
     <ul class="list-group">
-    <li class="list-group-item" *ngFor="let sm of structureMap;"><a (click)="openAction(sm.resource.id)">{{sm.resource.name}}</a></li>
+    <li class="list-group-item" *ngFor="let sm of structureMap;" (click)="openAction(sm.resource.id)">
+      <!-- <a (click)="openAction(sm.resource.id)"> -->
+        {{sm.resource.name}}
+      <!-- </a> -->
+    </li>
   </ul>
 
 </div>

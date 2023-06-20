@@ -2,7 +2,11 @@
 
     <div class="left ScrollStyle">
       <ul class="list-group">
-      <li class="list-group-item" *ngFor="let action of actions;"><a (click)="openAction(action.id)">{{action.description}}</a></li>
+      <li class="list-group-item" *ngFor="let action of actions;" [ngClass]="'tab-active'" (click)="openAction(action.id)">
+      <!-- <a (click)="openAction(action.id)"> -->
+        {{action.description}}
+      <!-- </a> -->
+    </li>
     </ul>
   
   </div>
@@ -14,5 +18,5 @@
     </div>
   </div>
   
-  </div>
-  
+  </div>  
+

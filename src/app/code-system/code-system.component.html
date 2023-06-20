@@ -2,7 +2,11 @@
 
   <div class="left p-2 ScrollStyle">
     <ul class="list-group">
-    <li class="list-group-item" *ngFor="let code of codeSystem;"><a (click)="openAction(code.code)">{{code.display}}</a></li>
+    <li class="list-group-item" *ngFor="let code of codeSystem;" (click)="openAction(code.code)">
+      <!-- <a (click)="openAction(code.code)"> -->
+        {{code.display}}
+      <!-- </a> -->
+    </li>
   </ul>
 
 </div>
