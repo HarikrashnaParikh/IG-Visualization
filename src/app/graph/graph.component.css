@@ -7,16 +7,9 @@
 
 .p-organizationChart {
   /* height: 100%; Make the chart take full height */
-  height: calc(100% - 50px); 
-  overflow-y: scroll; /* Enable vertical scrolling for the chart */
-}
-
-.ScrollStyle
-{
-
-    height: 550px;
-    overflow-x: scroll;
-    overflow-y: scroll;
+  /* overflow-y: scroll; Enable vertical scrolling for the chart */
+  /* scrollbar-width:auto; */
+  height: calc(100vh - 185px) !important;
 
 }
 

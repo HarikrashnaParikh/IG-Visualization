@@ -426,10 +426,9 @@ color: #3C434B;
   border-left: 3px solid #E4203B;
 }
 
-/* scrolling y axis in div */
-.ScrollStyle
+/*scrolling y axis in div */
+ .ScrollStyle
 {
-
     overflow-y: scroll;
     height: calc(100vh - 185px) !important;
     /* padding: 0px 8px !important; */
