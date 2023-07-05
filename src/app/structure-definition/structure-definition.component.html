@@ -1,0 +1,21 @@
+<div class="float-container">
+
+  <div class="left p-2 ScrollStyle">
+    <ul class="list-group">
+    <li class="list-group-item" *ngFor="let sd of structureDefinition;" [ngClass]="{ 'tab-active': selectedId === sd.resource.id }" (click)="openAction(sd.resource.id)">
+      <!-- <a (click)="openAction(sd.resource.id)"> -->
+        {{sd.resource.title ? sd.resource.title : sd.resource.name }}
+      <!-- </a> -->
+    </li>
+  </ul>
+
+</div>
+<div class="right p-2 ScrollStyle">
+  <div class="json-data p-2 mx-auto">
+    <div *ngIf="currentStructureDefinition">
+      <pre>{{currentStructureDefinition | json}}</pre>
+    </div>
+  </div>
+</div>
+
+</div>

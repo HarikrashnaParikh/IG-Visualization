@@ -8,7 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 export class GraphServiceService {
 
   private url = 'http://localhost:8080';
-  inHome = new BehaviorSubject<boolean>(false)
+  
+
+  // inHome = new BehaviorSubject<boolean>(false)
   // inHome:boolean=false
   // activityDefinitionId : any;
 
@@ -20,6 +22,10 @@ export class GraphServiceService {
 
   getActions(){
     return this.httpClient.get(`${this.url}/planDefinition/actions`);
+  }
+
+  getActionById(id: String){
+    return this.httpClient.get(`${this.url}/planDefinition/actions/${id}`)
   }
 
   getActivityDefinition(){
@@ -35,7 +41,7 @@ export class GraphServiceService {
     return this.httpClient.get(`${this.url}/questionnaire`);
   }
 
-  getQuestionnaireByID(activityDefinitionId: any){
+  getQuestionnaireById(activityDefinitionId: any){
     return this.httpClient.get(`${this.url}/questionnaire/`+activityDefinitionId);
   }
 
@@ -43,7 +49,7 @@ export class GraphServiceService {
     return this.httpClient.get(`${this.url}/structureMap`);
   }
 
-  getStructureMapByID(activityDefinitionId: any){
+  getStructureMapById(activityDefinitionId: any){
     return this.httpClient.get(`${this.url}/structureMap/`+activityDefinitionId);
   }
 
@@ -55,15 +61,30 @@ export class GraphServiceService {
     return this.httpClient.get(`${this.url}/structureDefinition`);
   }
 
+  getStructureDefinitionById(id: String){
+    return this.httpClient.get(`${this.url}/structureDefinition/${id}`);
+  }
   getLibrary(){
     return this.httpClient.get(`${this.url}/library`);
+  }
+
+  getLibraryById(id: String){
+    return this.httpClient.get(`${this.url}/library/${id}`);
   }
 
   getValueSet(){
     return this.httpClient.get(`${this.url}/valueSet`);
   }
 
+  getValueSetById(id: String){
+    return this.httpClient.get(`${this.url}/valueSet/${id}`);
+  }
+
   getCode(){
     return this.httpClient.get(`${this.url}/code`);
+  }
+
+  getCodeById(id: String){
+    return this.httpClient.get(`${this.url}/code/${id}`);
   }
 }

@@ -1,57 +1,23 @@
-#graph1{
-  zoom: 70%;
+#graph1 {
+  zoom: 60%;
+  transform-origin: top left;
+  /* height: 100%; Ensure the container takes full height */
+  /* overflow: hidden; Hide any content that exceeds the container */
 }
-:root {
-  --bg-primary: #CCCCFF;
+
+.p-organizationChart {
+  /* height: 100%; Make the chart take full height */
+  /* overflow-y: scroll; Enable vertical scrolling for the chart */
+  /* scrollbar-width:auto; */
+  height: calc(100vh - 185px) !important;
+
 }
 
-.hw{
-  height: 100vh;
-  /* width: 100%; */
+button {
+  background-color: #2d6a4f;
+  transition: all 1s;
 }
-.overflow-x-auto{
-  overflow-x: auto;
+
+.btn-toolbar{
+  flex-wrap: nowrap;
 }
-.graph{
-  background: white;
-  width: 97%;
-  height: 580px;
-}
-/* .container {
-    -webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg);
-    -o-transform: rotate(270deg);
-    -ms-transform: rotate(270deg);
-    transform: rotate(270deg);
-} */
-
-/* Custom styles for the graph component */
-/* .plan-definition {
-    background-color: indigo;
-    color: white;
-  }
-
-  .action {
-    background-color: blue;
-    color: white;
-  }
-
-  .activity-definition {
-    background-color: green;
-    color: white;
-  }
-
-  .questionnaire {
-    background-color: yellow;
-    color: black;
-  }
-
-  .structure-map {
-    background-color: purple;
-    color: white;
-  }
-
-  .target {
-    background-color: orange;
-    color: black;
-  } */

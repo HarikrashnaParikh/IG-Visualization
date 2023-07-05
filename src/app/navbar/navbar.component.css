@@ -1,3 +1,27 @@
-.active{
-  background-color: rgb(129, 128, 128);
+/* li {
+  border-radius: 10px;
+  height: 80px;
+  width: 145px;
 }
+.nav-link.active{
+  background-color: #2d6a4f;
+  color:  white;
+  border-radius: 10px;
+  height: 5rem;
+}
+
+.nav-link{
+  transition: all .5s ease-in-out;
+}
+
+.nav-link:hover{
+  color: white;
+  background-color: #40916c;
+  border-radius: 10px;
+  transform: scale(1.1);
+  height: 5rem;
+}
+a {
+  text-align:center;
+  padding: 5px;
+} */

@@ -1,10 +1,18 @@
-<div class="graph mx-auto mt-4 p-2">
-  <p-organizationChart id="graph1"  [value]="data">
-      <ng-template let-node pTemplate="person" >
-      <div class="p-1 text-center ">
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+  integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+  crossorigin="anonymous"
+/>
+
+<div class="shadow bg-body rounded">
+<div class="shadow mx-auto p-3 bg-body rounded card d-flex ScrollStyle flex-row">
+  <p-organizationChart id="graph1" [value]="data" class="w-100">
+    <ng-template let-node pTemplate="person">
+      <div class="p-1 text-center">
         <!-- <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" /> -->
         <div class="font-bold">{{ node.data.name }}</div>
-        <hr>
+        <hr />
         <div class="font-bold">Id : {{ node.data.id }}</div>
         <!-- <div>Description : {{ node.data.description }}</div>
         <br>
@@ -12,36 +20,26 @@
       </div>
     </ng-template>
   </p-organizationChart>
+  <div
+    class="btn-toolbar position-fixed end-0"
+    role="toolbar"
+    aria-label="Toolbar with button groups"
+  >
+    <div class="btn-group me-2 p-1" role="group" aria-label="Third group" (click)="zoomOut()">
+      <a class="btn zoom-out"
+        ><i class="fas fa-search-minus" ></i
+      ></a>
+    </div>
+    <div class="btn-group me-2 p-1" role="group" aria-label="Second group" (click)="zoomIn()">
+      <a class="btn zoom"
+        ><i class="fas fa-search-plus"></i
+      ></a>
+    </div>
+    <div class="btn-group me-2 p-1" role="group" aria-label="First group" (click)="resetZoom()">
+      <a class="btn zoom-init"
+        ><i class="fas fa-recycle"></i
+      ></a>
+    </div>
+  </div>
 </div>
-
-<!-- <h1>Hello this is backend data object</h1>
-
-<ul>
-    Action :
-    {{ actions.length }}
-    <hr />
-    Activity Definition :
-    {{ad.length}}
-    <hr />
-    Questionnaire :
-    {{questionnaire.length}}
-    <hr />
-    Structure Map :
-    {{structureMap.length}}
-    <hr />
-    Targets of Structure Map
-    <hr />
-    Structure Definition :
-    {{structureDefinition.length}}
-    <hr />
-    Library :
-    {{library.length}}
-    <hr />
-    Value Set :
-    {{valueSet.length}}
-    <hr />
-    Code System :
-    {{code.length}}
-
-</ul>
- -->
+</div> 
