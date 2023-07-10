@@ -32,15 +32,22 @@ export class NavbarComponent {
 
     this.graphService.getActions().subscribe((response: any) => {
       this.actions = response;
+      console.log("here is actions... "+JSON.stringify(this.actions));
+      
     });
     this.graphService.getActivityDefinition().subscribe((response: any) => {
       this.ad = response; // Handle the response
+      console.log("here is activity definition ... "+this.ad);
+      
     });
     this.graphService.getQuestionnaire().subscribe((response: any) => {
       this.questionnaire = response; // Handle the response
+      console.log("here is questionarie ... "+this.questionnaire); 
     });
     this.graphService.getStructureMap().subscribe((response: any) => {
       this.structureMap = response; // Handle the response
+
+      console.log("here is questionarie ... "+this.structureMap);
     });
     this.graphService.getStructureDefinition().subscribe((response: any) => {
       this.structureDefinition = response; // Handle the response
