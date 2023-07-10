@@ -27,7 +27,8 @@ export class GraphComponent implements OnInit {
       .getPlanDefinition()
       .pipe(
         switchMap((response: any) => {
-          const planDefinitionId = response.resource.id;
+          console.log(response);
+          const planDefinitionId = response.resource.description ? response.resource.description : response.resource.id ;
           this.data = [
             {
               expanded: true,
@@ -35,7 +36,7 @@ export class GraphComponent implements OnInit {
               styleClass: 'bg-primary text-white',
               data: {
                 name: 'Plan Definition',
-                id: planDefinitionId,
+                description: planDefinitionId,
               },
               children: [],
             },
@@ -52,7 +53,7 @@ export class GraphComponent implements OnInit {
             const actionDefinitionCanonical = action.definitionCanonical;
 
             this.data[0].children?.push({
-              expanded: false,
+              expanded: true,
               type: 'person',
               styleClass: 'bg-warning text-dark',
               data: {
@@ -107,44 +108,46 @@ export class GraphComponent implements OnInit {
             for (let j = 0; j < target.length; j++) {
               const targetItem = target[j];
               structureMapChildren.push({
-                expanded: false,
+                expanded: true,
                 type: 'person',
                 styleClass: 'bg-light text-dark',
                 data: {
                   name: 'Target',
-                  id: targetItem.alias,
+                  description : targetItem.alias,
                 },
                 children: [],
               });
             }
 
             this.data[0].children[i].children.push({
-              expanded: false,
+              expanded: true,
               type: 'person',
               styleClass: 'bg-success text-white',
               data: {
                 name: 'Activity Definition',
                 id: activityDefinition.resource.id,
-                description: activityDefinition.description,
+                description: activityDefinition.resource.useContext?.[0].valueCodeableConcept.coding[0].display ? activityDefinition.resource.useContext?.[0].valueCodeableConcept.coding[0].display : activityDefinition.resource.id,
                 definitionCanonical: activityDefinition.definitionCanonical,
               },
               children: [
                 {
-                  expanded: false,
+                  expanded: true,
                   type: 'person',
                   styleClass: 'bg-secondary text-white',
                   data: {
                     name: 'Questionnaire',
                     id: questionnaire.resource.id,
+                    description : questionnaire.resource.title ? questionnaire.resource.title : questionnaire.resource.name
                   },
                   children: [
                     {
-                      expanded: false,
+                      expanded: true,
                       type: 'person',
                       styleClass: 'bg-danger text-white',
                       data: {
                         name: 'Structure Map',
                         id: structureMap.resource.id,
+                        description : structureMap.resource.name
                       },
                       children: structureMapChildren,
                     },
