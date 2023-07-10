@@ -19,6 +19,7 @@ export class GraphComponent implements OnInit {
   library: any = [];
   valueSet: any = [];
   code: any = [];
+  pdId!: string;
 
   constructor(private graphService: GraphServiceService) {}
 
@@ -42,7 +43,7 @@ export class GraphComponent implements OnInit {
             },
           ];
 
-          return this.graphService.getActions();
+          return this.graphService.getActions(this.pdId);
         }),
         switchMap((response: any) => {
           this.actions = response;

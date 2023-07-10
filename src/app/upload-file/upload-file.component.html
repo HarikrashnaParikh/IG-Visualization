@@ -62,12 +62,13 @@
             (dragleave)="onDragLeave($event)"
             >
             <div 
-            class="shadow-lg p-3 mb-5 bg-body rounded"
+            class="p-1 mb-3 bg-body rounded"
             [ngClass]="{ dragover: isDragOver }"
             >
             <form (ngSubmit)="onSubmit()">  
-              <p>Drag & Drop your files here</p>
-              <p>OR</p>
+              <span>Drag & Drop your files here</span>
+              <br>
+              <span>OR</span>
               <div class="upload-btn-wrapper">
                 <button class="btn">Browse</button>
                 <input
@@ -76,6 +77,8 @@
                   (change)="onFileSelected($event)"
                 />
               </div>
+              <p style="color: blue;">{{fileName}}</p>
+              <br>
               <span>Supported file type .json </span>
               <button class="btn upload_btn" type="submit">UPLOAD</button>
             </form>

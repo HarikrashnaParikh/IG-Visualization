@@ -10,18 +10,18 @@ export class ActionsComponent implements OnInit {
   actions: any;
   currentAction: any;
   selectedId: any;
-
+  pdId!: string;
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
-    this.graphService.getActions().subscribe((actions) => {
+    this.graphService.getActions(this.pdId).subscribe((actions) => {
       this.actions = actions;
     });
   }
 
   openAction(action: any) {
     this.selectedId = action;
-    this.graphService.getActionById(action).subscribe((actionData) => {
+    this.graphService.getActionById(this.pdId,action).subscribe((actionData) => {
       // Handle action retrieval
       this.currentAction = JSON.parse(JSON.stringify(actionData));
     });

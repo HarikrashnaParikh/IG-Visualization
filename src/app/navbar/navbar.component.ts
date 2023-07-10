@@ -9,6 +9,7 @@ import { UploadFileComponent } from '../upload-file/upload-file.component';
   // styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+  planDefinition: any = [];
   actions: any = [];
   ad: any = [];
   questionnaire: any = [];
@@ -20,17 +21,24 @@ export class NavbarComponent {
   fileName!: string;
   nameWithoutExtension!: string;
   capitalizedFirstName!: string;
+  pdId!: string ;
   constructor(
     private router: Router,
     private graphService: GraphServiceService,
     ) {}
     
-    ngOnInit() {
+    async ngOnInit() {
     this.fileName = sessionStorage.getItem("fileName")!;
     this.nameWithoutExtension = this.fileName.split(".")[0]; 
     this.capitalizedFirstName = this.nameWithoutExtension.charAt(0).toUpperCase() + this.nameWithoutExtension.slice(1);
 
-    this.graphService.getActions().subscribe((response: any) => {
+    await this.graphService.getPlanDefinition().subscribe((response: any)=>{
+      this.planDefinition = response;
+      localStorage.setItem('pdIdDefault', this.planDefinition[0].resource.id);
+    })
+
+    this.graphService.getActions(this.pdId).subscribe((response: any) => {
+      
       this.actions = response;
       console.log("here is actions... "+JSON.stringify(this.actions));
       

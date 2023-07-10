@@ -20,12 +20,19 @@ export class GraphServiceService {
     return this.httpClient.get(`${this.url}/planDefinition`);
   }
 
-  getActions(){
-    return this.httpClient.get(`${this.url}/planDefinition/actions`);
+  getPlanDefinitionById(id: string){
+    return this.httpClient.get(`${this.url}/planDefinition/${id}`);
+
+  }
+  getActions(pdId: string | null){
+    pdId = pdId ?  pdId : localStorage.getItem("pdIdDefault");
+    return this.httpClient.get(`${this.url}/planDefinition/${pdId}/actions`);
   }
 
-  getActionById(id: String){
-    return this.httpClient.get(`${this.url}/planDefinition/actions/${id}`)
+  getActionById(pdId: string | null,id: string ){
+
+    pdId = pdId ?  pdId : localStorage.getItem("pdIdDefault");
+    return this.httpClient.get(`${this.url}/planDefinition/${pdId}/actions/${id}`)
   }
 
   getActivityDefinition(){
