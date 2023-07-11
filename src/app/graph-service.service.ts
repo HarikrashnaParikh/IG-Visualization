@@ -20,8 +20,9 @@ export class GraphServiceService {
     return this.httpClient.get(`${this.url}/planDefinition`);
   }
 
-  getPlanDefinitionById(id: string){
-    return this.httpClient.get(`${this.url}/planDefinition/${id}`);
+  getPlanDefinitionById(pdId: string | null){
+    pdId = pdId ?  pdId : localStorage.getItem("pdIdDefault");
+    return this.httpClient.get(`${this.url}/planDefinition/${pdId}`);
 
   }
   getActions(pdId: string | null){
@@ -40,7 +41,7 @@ export class GraphServiceService {
   }
 
   getActivityDefinitionById(activityDefinitionId: any){
-
+    
     return this.httpClient.get(`${this.url}/activityDefinition/`+activityDefinitionId);
   }
 
