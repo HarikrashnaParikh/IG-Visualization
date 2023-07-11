@@ -28,7 +28,6 @@ export class GraphComponent implements OnInit {
       .getPlanDefinitionById(this.pdId)
       .pipe(
         switchMap((response: any) => {
-          console.log(response);
           const planDefinitionId = response.resource.description ? response.resource.description : response.resource.id ;
           this.data = [
             {

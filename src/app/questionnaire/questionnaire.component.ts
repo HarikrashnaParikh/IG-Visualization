@@ -15,8 +15,6 @@ export class QuestionnaireComponent {
   ngOnInit(): void {
     this.graphService.getQuestionnaire().subscribe((questionnaire) => {
       this.questionnaire = questionnaire;
-      console.log(this.questionnaire);
-
     });
   }
 

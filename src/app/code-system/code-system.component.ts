@@ -15,7 +15,6 @@ export class CodeSystemComponent {
   ngOnInit(): void {
     this.graphService.getCode().subscribe((codeSystem) => {
       this.codeSystem = codeSystem;
-      console.log(this.codeSystem);
     });
   }
 

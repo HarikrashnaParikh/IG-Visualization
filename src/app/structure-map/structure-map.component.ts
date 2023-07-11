@@ -15,8 +15,6 @@ export class StructureMapComponent {
   ngOnInit(): void {
     this.graphService.getStructureMap().subscribe((structureMap) => {
       this.structureMap = structureMap;
-      console.log(this.structureMap);
-
     });
   }
 

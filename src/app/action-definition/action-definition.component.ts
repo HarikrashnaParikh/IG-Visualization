@@ -17,8 +17,6 @@ export class ActionDefinitionComponent {
   ngOnInit(): void {
     this.graphService.getActivityDefinition().subscribe((activityDefinition) => {
       this.activityDefinition = activityDefinition;
-      console.log(this.activityDefinition);
-
     });
   }
 

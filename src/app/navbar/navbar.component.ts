@@ -39,23 +39,16 @@ export class NavbarComponent {
 
     this.graphService.getActions(this.pdId).subscribe((response: any) => {
       
-      this.actions = response;
-      console.log("here is actions... "+JSON.stringify(this.actions));
-      
+      this.actions = response;      
     });
     this.graphService.getActivityDefinition().subscribe((response: any) => {
-      this.ad = response; // Handle the response
-      console.log("here is activity definition ... "+this.ad);
-      
+      this.ad = response; // Handle the response      
     });
     this.graphService.getQuestionnaire().subscribe((response: any) => {
       this.questionnaire = response; // Handle the response
-      console.log("here is questionarie ... "+this.questionnaire); 
     });
     this.graphService.getStructureMap().subscribe((response: any) => {
       this.structureMap = response; // Handle the response
-
-      console.log("here is questionarie ... "+this.structureMap);
     });
     this.graphService.getStructureDefinition().subscribe((response: any) => {
       this.structureDefinition = response; // Handle the response
