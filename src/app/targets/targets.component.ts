@@ -13,16 +13,16 @@ export class TargetsComponent {
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
-    this.graphService.getStructureMap().subscribe((structureMap) => {
-      this.structureMap = structureMap;
-    });
+    // this.graphService.getStructureMap().subscribe((structureMap) => {
+    //   this.structureMap = structureMap;
+    // });
   }
 
   openAction(id: String) {
     this.selectedId= id;
-    this.graphService.getTargetById(id).subscribe((target) => {
-      this.currentTarget = JSON.parse(JSON.stringify(target))
-    });
+    // this.graphService.getTargetById(id).subscribe((target) => {
+    //   this.currentTarget = JSON.parse(JSON.stringify(target))
+    // });
 
   }
 }

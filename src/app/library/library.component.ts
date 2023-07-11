@@ -13,16 +13,16 @@ export class LibraryComponent {
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
-    this.graphService.getLibrary().subscribe((library) => {
-      this.library = library;
-    });
+    // this.graphService.getLibrary().subscribe((library) => {
+    //   this.library = library;
+    // });
   }
 
   openAction(id: String) {
     this.selectedId = id;
-    this.graphService.getLibraryById(id).subscribe((library) => {
-      this.currentLibrary = JSON.parse(JSON.stringify(library))
-    });
+    // this.graphService.getLibraryById(id).subscribe((library) => {
+    //   this.currentLibrary = JSON.parse(JSON.stringify(library))
+    // });
 
   }
 }

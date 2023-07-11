@@ -14,16 +14,16 @@ export class ActionsComponent implements OnInit {
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
-    this.graphService.getActions(this.pdId).subscribe((actions) => {
-      this.actions = actions;
-    });
+    // this.graphService.getActions(this.pdId).subscribe((actions) => {
+    //   this.actions = actions;
+    // });
   }
 
   openAction(action: any) {
     this.selectedId = action;
-    this.graphService.getActionById(this.pdId,action).subscribe((actionData) => {
-      // Handle action retrieval
-      this.currentAction = JSON.parse(JSON.stringify(actionData));
-    });
+    // this.graphService.getActionById(this.pdId,action).subscribe((actionData) => {
+    //   // Handle action retrieval
+    //   this.currentAction = JSON.parse(JSON.stringify(actionData));
+    // });
   }
 }

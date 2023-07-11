@@ -13,16 +13,16 @@ export class ValueSetComponent {
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
-    this.graphService.getValueSet().subscribe((valueSet) => {
-      this.valueSet = valueSet;
-    });
+    // this.graphService.getValueSet().subscribe((valueSet) => {
+    //   this.valueSet = valueSet;
+    // });
   }
 
   openAction(id: String) {
     this.selectedId = id;
-    this.graphService.getValueSetById(id).subscribe((valueSet) => {
-      this.currentValueSet = JSON.parse(JSON.stringify(valueSet))
-    });
+    // this.graphService.getValueSetById(id).subscribe((valueSet) => {
+    //   this.currentValueSet = JSON.parse(JSON.stringify(valueSet))
+    // });
 
   }
 }
