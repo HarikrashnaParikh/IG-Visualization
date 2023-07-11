@@ -40,29 +40,19 @@
 
   <div class="main-content">
     <div class="blue-header">
-      <a
+      <div class="file-name me-4">
+
+        <a
         >{{ capitalizedFirstName }}
         <span>{{ fileName }}</span>
       </a>
+    </div>
 
-      <ul class="nav nav-tabs ms-5" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button
-            class="nav-link"
-            id="home-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#home"
-            type="button"
-            role="tab"
-            aria-controls="home"
-            aria-selected="false"   
-            routerLinkActive="active"
-            routerLink="planDefinition"
-          >
-            Plan Definition
-          </button>
+      <ul class="list-group list-group-horizontal" style="overflow-y: scroll;">
+        <li class="list-group-item p-2 me-2 " *ngFor="let pd of planDefinition;">
+          {{ pd.resource.id }}
         </li>
-    </ul>
+      </ul>
     </div>
     <div class="px-3 guide-tab">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
