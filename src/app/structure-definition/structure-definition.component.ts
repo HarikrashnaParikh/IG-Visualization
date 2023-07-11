@@ -13,17 +13,17 @@ export class StructureDefinitionComponent {
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
-    this.graphService.getStructureDefinition().subscribe((structureDefinition) => {
-      this.structureDefinition = structureDefinition;
+    // this.graphService.getStructureDefinition().subscribe((structureDefinition) => {
+    //   this.structureDefinition = structureDefinition;
 
-    });
+    // });
   }
 
   openAction(id: String) {
     this.selectedId = id;
-    this.graphService.getStructureDefinitionById(id).subscribe((structureDefinition) => {
-      this.currentStructureDefinition = JSON.parse(JSON.stringify(structureDefinition))
-    });
+    // this.graphService.getStructureDefinitionById(id).subscribe((structureDefinition) => {
+    //   this.currentStructureDefinition = JSON.parse(JSON.stringify(structureDefinition))
+    // });
 
   }
 }

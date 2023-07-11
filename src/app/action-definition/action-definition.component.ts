@@ -15,16 +15,16 @@ export class ActionDefinitionComponent {
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
-    this.graphService.getActivityDefinition().subscribe((activityDefinition) => {
-      this.activityDefinition = activityDefinition;
-    });
+    // this.graphService.getActivityDefinition().subscribe((activityDefinition) => {
+    //   this.activityDefinition = activityDefinition;
+    // });
   }
 
   openAction(id: String) {    
     this.selectedId = id;
-    this.graphService.getActivityDefinitionById(id).subscribe((ad) => {      
-      this.currentActivityDefinition = JSON.parse(JSON.stringify(ad))      
-    });
+    // this.graphService.getActivityDefinitionById(id).subscribe((ad) => {      
+    //   this.currentActivityDefinition = JSON.parse(JSON.stringify(ad))      
+    // });
 
   }
 

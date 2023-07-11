@@ -13,16 +13,16 @@ export class CodeSystemComponent {
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
-    this.graphService.getCode().subscribe((codeSystem) => {
-      this.codeSystem = codeSystem;
-    });
+    // this.graphService.getCode().subscribe((codeSystem) => {
+    //   this.codeSystem = codeSystem;
+    // });
   }
 
   openAction(id: String) {
     this.selectedId = id;
-    this.graphService.getCodeById(id).subscribe((code) => {
-      this.currentCodeSystem = JSON.parse(JSON.stringify(code))
-    });
+    // this.graphService.getCodeById(id).subscribe((code) => {
+    //   this.currentCodeSystem = JSON.parse(JSON.stringify(code))
+    // });
 
   }
 

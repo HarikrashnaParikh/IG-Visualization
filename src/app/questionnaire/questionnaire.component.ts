@@ -13,16 +13,16 @@ export class QuestionnaireComponent {
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
-    this.graphService.getQuestionnaire().subscribe((questionnaire) => {
-      this.questionnaire = questionnaire;
-    });
+    // this.graphService.getQuestionnaire().subscribe((questionnaire) => {
+    //   this.questionnaire = questionnaire;
+    // });
   }
 
   openAction(id: String) {
     this.selectedId = id;
-    this.graphService.getQuestionnaireById(id).subscribe((questionnaire) => {
-      this.currentQuestionnaire = JSON.parse(JSON.stringify(questionnaire))
-    });
+    // this.graphService.getQuestionnaireById(id).subscribe((questionnaire) => {
+    //   this.currentQuestionnaire = JSON.parse(JSON.stringify(questionnaire))
+    // });
 
   }
 }

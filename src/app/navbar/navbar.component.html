@@ -72,7 +72,7 @@
             Graph
           </button>
         </li>
-        <li class="px-3  nav-item" role="presentation">
+        <li class="nav-item" role="presentation">
           <button
             class="nav-link"
             id="profile-tab"
@@ -84,12 +84,13 @@
             aria-selected="false"
             routerLinkActive="active"
             routerLink="actions"
+            *ngIf="actions.length>0"
           >
             Actions
-            <span class="digit" *ngIf="actions">{{ actions.length }}</span>
+            <span class="digit">{{ actions.length }}</span>
           </button>
         </li>
-        <li class="px-3 nav-item" role="presentation">
+        <li class="nav-item" role="presentation">
           <button
             class="nav-link"
             id="contact-tab"
@@ -101,16 +102,16 @@
             aria-selected="false"
             routerLinkActive="active"
             routerLink="activityDefinition"
+            *ngIf="resourceDataLength.ActivityDefinition>0"
           >
-            Activity Definition<span class="digit" *ngIf="ad">{{
-              ad.length
-            }}</span>
+            Activity Definition<span class="digit">{{
+              resourceDataLength.ActivityDefinition            }}</span>
           </button>
         </li>
         <li class="nav-item" role="presentation">
           <button
             class="nav-link"
-            *ngIf="questionnaire.length > 0"
+            *ngIf="resourceDataLength.Questionnaire > 0"
             id="contact-tab"
             data-bs-toggle="tab"
             data-bs-target="#contact"
@@ -121,7 +122,7 @@
             routerLinkActive="active"
             routerLink="questionnaire"
           >
-            Questionnaire<span class="digit">{{ questionnaire.length }}</span>
+            Questionnaire<span class="digit">{{ resourceDataLength.Questionnaire }}</span>
           </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -136,11 +137,10 @@
             aria-selected="false"
             routerLinkActive="active"
             routerLink="structureMap"
-            *ngIf="structureMap.length>0"
+            *ngIf="resourceDataLength.StructureMap>0"
           >
             Structure Map<span class="digit" >{{
-              structureMap.length
-            }}</span>
+              resourceDataLength.StructureMap     }}</span>
           </button>
         </li>
         <!-- <li class="nav-item" role="presentation">
@@ -161,11 +161,11 @@
             aria-selected="false"
             routerLinkActive="active"
             routerLink="structureDefinition"
-            *ngIf="structureDefinition.length>0"
+            *ngIf="resourceDataLength.StructureDefinition>0"
           >
             Structure Definition<span
               class="digit"
-              >{{ structureDefinition.length }}</span
+              >{{ resourceDataLength.StructureDefinition }}</span
             >
           </button>
         </li>
@@ -181,14 +181,14 @@
             aria-selected="false"
             routerLinkActive="active"
             routerLink="library"
-            *ngIf="library.length>0"
+            *ngIf="resourceDataLength.Library>0"
           >
             Library<span class="digit" >{{
-              library.length
+              resourceDataLength.Library
             }}</span>
           </button>
         </li>
-        <li class="px-3 nav-item" role="presentation">
+        <li class="nav-item" role="presentation">
           <button
             class="nav-link"
             id="contact-tab"
@@ -200,11 +200,11 @@
             aria-selected="false"
             routerLinkActive="active"
             routerLink="valueSet"
-            *ngIf="valueSet.length>0"
+            *ngIf="resourceDataLength.ValueSet>0"
           >
             Value Set<span class="digit" >{{
-              valueSet.length
-            }}</span>
+              resourceDataLength.ValueSet 
+                        }}</span>
           </button>
         </li>
         <li class="px-3 nav-item" role="presentation">
@@ -219,9 +219,9 @@
             aria-selected="false"
             routerLinkActive="active"
             routerLink="codeSystem"
-            *ngIf="code.length>0"
+            *ngIf="resourceDataLength.CodeSystem>0"
           >
-            Code System<span class="digit">{{ code.length }}</span>
+            Code System<span class="digit">{{ resourceDataLength.CodeSystem }}</span>
           </button>
         </li>
       </ul>

@@ -13,16 +13,16 @@ export class StructureMapComponent {
   constructor(private graphService: GraphServiceService) {}
 
   ngOnInit(): void {
-    this.graphService.getStructureMap().subscribe((structureMap) => {
-      this.structureMap = structureMap;
-    });
+    // this.graphService.getStructureMap().subscribe((structureMap) => {
+    //   this.structureMap = structureMap;
+    // });
   }
 
   openAction(id: String) {
     this.selectedId=id;
-    this.graphService.getStructureMapById(id).subscribe((structureMap) => {
-      this.currentStructureMap = JSON.parse(JSON.stringify(structureMap))
-    });
+    // this.graphService.getStructureMapById(id).subscribe((structureMap) => {
+    //   this.currentStructureMap = JSON.parse(JSON.stringify(structureMap))
+    // });
 
   }
 }
