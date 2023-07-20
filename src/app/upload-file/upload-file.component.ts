@@ -41,7 +41,7 @@ export class UploadFileComponent {
   onFileSelected(event: any) {
     this.file = event.target.files[0];
     this.fileName = event.target.files[0].name;
-    sessionStorage.setItem("fileName", this.fileName);
+    localStorage.setItem("fileName", this.fileName);
   }
 
   onFileDrop(event: DragEvent) {
