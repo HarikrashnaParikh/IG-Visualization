@@ -18,6 +18,7 @@ import { StructureDefinitionComponent } from './structure-definition/structure-d
 import { LibraryComponent } from './library/library.component';
 import { ValueSetComponent } from './value-set/value-set.component';
 import { CodeSystemComponent } from './code-system/code-system.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CodeSystemComponent } from './code-system/code-system.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     OrganizationChartModule,
-    HttpClientModule
+    HttpClientModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

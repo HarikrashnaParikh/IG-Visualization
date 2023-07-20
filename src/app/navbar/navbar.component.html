@@ -42,17 +42,27 @@
     <div class="blue-header">
       <div class="file-name me-4">
 
-        <a
-        >{{ capitalizedFirstName }}
-        <span>{{ fileName }}</span>
-      </a>
+        <a>
+          {{ capitalizedFirstName }}
+          <span>{{ fileName }}</span>
+        </a>
     </div>
-
+<!-- 
       <ul class="list-group list-group-horizontal" style="overflow-y: scroll;">
         <li class="list-group-item p-2 me-2 " *ngFor="let pd of planDefinition;">
           {{ pd.resource.id }}
         </li>
-      </ul>
+      </ul> -->
+  <div class="mx-auto ">
+    <!-- <div class="mx-auto">
+      
+      <label>Select Plan Definition : </label>
+    </div> -->
+    <div class="position-absolute">
+      <p-dropdown (onChange)="getPdData()" placeholder="Select Plan Definition :" [(ngModel)]="selectedData" [options]="pdIds">
+      </p-dropdown>
+    </div>
+  </div> 
     </div>
     <div class="px-3 guide-tab">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -84,10 +94,10 @@
             aria-selected="false"
             routerLinkActive="active"
             routerLink="actions"
-            *ngIf="actions.length>0"
+            *ngIf="actionSize>0"
           >
             Actions
-            <span class="digit">{{ actions.length }}</span>
+            <span class="digit">{{ actionSize }}</span>
           </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -102,10 +112,10 @@
             aria-selected="false"
             routerLinkActive="active"
             routerLink="activityDefinition"
-            *ngIf="resourceDataLength.ActivityDefinition>0"
+            *ngIf="adData.length>0"
           >
             Activity Definition<span class="digit">{{
-              resourceDataLength.ActivityDefinition            }}</span>
+              adData.length   }}</span>
           </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -181,10 +191,29 @@
             aria-selected="false"
             routerLinkActive="active"
             routerLink="library"
-            *ngIf="resourceDataLength.Library>0"
+            *ngIf="libraryData.length>0"
           >
             Library<span class="digit" >{{
-              resourceDataLength.Library
+              libraryData.length
+            }}</span>
+          </button>
+        </li>
+        <li class="px-3 nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="contact-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#contact"
+            type="button"
+            role="tab"
+            aria-controls="contact"
+            aria-selected="false"
+            routerLinkActive="active"
+            
+            *ngIf="deviceData.length>0"
+          >
+            Device<span class="digit" >{{
+              deviceData.length
             }}</span>
           </button>
         </li>

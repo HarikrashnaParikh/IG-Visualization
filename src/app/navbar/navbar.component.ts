@@ -9,18 +9,16 @@ import { UploadFileComponent } from '../upload-file/upload-file.component';
   // styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  test = [{
-    "name" : "Hari",
-    "Ro" : 1
-  },
-  {
-    "name" : "ABC",
-    "Ro" : 123
-  }
-];
-  data: any ;
   planDefinition: any = [];
+  pdIds!: string[];
+  selectedData!: string;
+  selectedPd!: any;
+  adIds: string[] = [];
+  adData: any[] = [];
+  actionSize !: number;
   actions: any = [];
+  libraryData = [];
+  deviceData = [];
   ad: any = [];
   questionnaire: any = [];
   structureMap: any = [];
@@ -32,86 +30,98 @@ export class NavbarComponent {
   nameWithoutExtension!: string;
   capitalizedFirstName!: string;
   resourceName!: string;
-  pdId!: string ;
+  pdId!: string;
   allResource: any = [];
-  resourceData:  any = [];
-  resourceDataLength:  any = [];
+  resourceData: any = [];
+  resourceDataLength: any = [];
   constructor(
     private router: Router,
-    private graphService: GraphServiceService,
-    ) {}
-    
-    ngOnInit() {
-    this.fileName = sessionStorage.getItem("fileName")!;
-    this.nameWithoutExtension = this.fileName.split(".")[0]; 
-    this.capitalizedFirstName = this.nameWithoutExtension.charAt(0).toUpperCase() + this.nameWithoutExtension.slice(1);
+    private graphService: GraphServiceService
+  ) {}
 
-    //GET all resource's name 
-     this.graphService.getAllResources().subscribe({
-      next: (res) => {
-          this.allResource = res;
-          console.log(this.allResource);
-      },
-      error: (error) => console.log(error),
-      complete: () => {
-        for(let i=0; i<this.allResource.length;i++){
-          // console.log(i);
-          
-          // this.resourceName = this.allResource[i];
-          // console.log("here is resourceNAme....."+this.resourceName);
-          
-          this.graphService.getResource(this.allResource[i]).subscribe((response: any)=>{
-            this.data = response;          
-            // console.log(this.allResource[i]+"==="+JSON.stringify(this.data));
-            // console.log(this.data.length);
-            this.resourceData[this.allResource[i]] = this.data; 
-            // console.log(this.resourceData);
-            // localStorage.setItem('pdIdDefault', this.data[0].resource.id);
-            // console.log(localStorage.getItem('pdIdDefault'));
-            this.resourceDataLength[this.allResource[i]] = this.data.length;
-            // console.log(this.resourceDataLength);
-            console.log(this.resourceDataLength);
-          })
-        }
-        setTimeout(() => {console.log("final " +this.resourceDataLength);}, 10000);   
-        console.log(this.resourceDataLength);       
-      },
-     })
-     //Get data for Pd
-    //  console.log("=====",JSON.stringify(this.resourceDataLength));
-     
-     
-    // //PD 
-    // await this.graphService.getResource(this.resourceName).subscribe((response: any)=>{
-    //   this.planDefinition = response;
-    //   localStorage.setItem('pdIdDefault', this.planDefinition[0].resource.id);
-    // })
+  ngOnInit() {
+    this.prerequisite();
+  }
 
-    // this.graphService.getActions(this.pdId).subscribe((response: any) => {
-      
-    //   this.actions = response;      
-    // });
-    // this.graphService.getActivityDefinition().subscribe((response: any) => {
-    //   this.ad = response; // Handle the response      
-    // });
-    // this.graphService.getQuestionnaire().subscribe((response: any) => {
-    //   this.questionnaire = response; // Handle the response
-    // });
-    // this.graphService.getStructureMap().subscribe((response: any) => {
-    //   this.structureMap = response; // Handle the response
-    // });
-    // this.graphService.getStructureDefinition().subscribe((response: any) => {
-    //   this.structureDefinition = response; // Handle the response
-    // });
-    // this.graphService.getLibrary().subscribe((response: any) => {
-    //   this.library = response; // Handle the response
-    // });
-    // this.graphService.getValueSet().subscribe((response: any) => {
-    //   this.valueSet = response; // Handle the response
-    // });
-    // this.graphService.getCode().subscribe((response: any) => {
-    //   this.code = response; // Handle the response
-    // });
+  prerequisite() {
+    this.fileName = localStorage.getItem('fileName')!;
+    this.nameWithoutExtension = this.fileName.split('.')[0];
+    this.capitalizedFirstName =
+      this.nameWithoutExtension.charAt(0).toUpperCase() +
+      this.nameWithoutExtension.slice(1);
+    this.getPdIds();
+  }
+  getPdIds() {
+    this.graphService
+      .getResource('PlanDefinition')
+      .subscribe((response: any) => {
+        this.planDefinition = response;
+        this.pdIds = this.planDefinition.map((item: any) => item.resource.id);
+      });
+  }
+
+  getPlanDefinitionData(selectedId: string) {
+    this.graphService
+      .getResource('PlanDefinition')
+      .subscribe((response: any) => {
+        this.planDefinition = response;
+        this.selectedPd = this.planDefinition.find((el: any) => el.resource.id === selectedId);
+        console.log('select pd====', this.selectedPd);
+        this.actionSize = this.selectedPd.resource.action.length;        
+        this.selectedPd.resource.action.forEach((data: any) => {
+          this.adIds.push(data.definitionCanonical.split('/').slice(-1).pop());
+        });
+        console.log('temp array ####', this.adIds);
+        this.adIds.forEach((adId: any) => {
+          this.getActivityDefinitionData(adId);
+        });
+
+        console.log(this.adData);
+
+        // const adData = (tempData as any[]).map((data: any)=>data.resource.action).map((obj: string)=>obj.split('/').slice(-1).pop());
+        // console.log("herrrrr====",adData);
+
+        // const data = (this.planDefinition as any[]).map((object)=>object.resource.action)
+        // .reduce((acc,curr)=>{
+        //   return [...acc,...curr.map((action: { definitionCanonical: any; })=>action.definitionCanonical)]
+        // },[]).map((obj: string)=>obj.split('/').slice(-1).pop())
+        // console.log(data)
+
+        // console.log("here is pd===",this.planDefinition);
+        // console.log("=====wkfbsdkvb=====",this.pdIds);
+      });
+  }
+  getActivityDefinitionData(selectedId: string) {
+    this.graphService.getResource('ActivityDefinition').subscribe((response: any) => {
+        this.ad = response;
+        this.adData.push(
+          this.ad.find((el: any) => el.resource.id === selectedId)
+        );
+
+        // const tempAd = this.ad.find((el: any) => el.resource.id === temp);
+      });
+  }
+
+  getLibraryData() {
+    this.graphService.getResource('Library').subscribe((response: any) => {
+      this.libraryData = response;
+    });
+  }
+
+  getDeviceData() {
+    this.graphService.getResource('Device').subscribe((response: any) => {
+      this.deviceData = response;
+    });
+  }
+
+  async getPdData() {
+    const temp = this.selectedData;
+    await this.getPlanDefinitionData(temp);
+    this.getDeviceData();
+    this.getLibraryData();
+
+    // console.log("ddytdytdytd",temp);
+    // console.log("============",tempData);
   }
 
   backToHome() {
