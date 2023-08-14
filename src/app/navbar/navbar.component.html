@@ -59,7 +59,7 @@
       <label>Select Plan Definition : </label>
     </div> -->
     <div class="position-absolute">
-      <p-dropdown (onChange)="getPdData()" placeholder="Select Plan Definition :" [(ngModel)]="selectedData" [options]="pdIds">
+      <p-dropdown (onChange)="getPdData()" placeholder="Select Plan Definition :" [(ngModel)]="selectedData" [options]="pdIds"  autoWidth="false" [style]="{'width':'100%'}" appendTo="body" >
       </p-dropdown>
     </div>
   </div> 
