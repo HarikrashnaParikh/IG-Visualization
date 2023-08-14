@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "IGVisualization-UI": {
+    "IGVisualization-ui": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -28,7 +28,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/slick/slick.css",
+              "src/assets/slick/slick-theme.css"
             ],
             "scripts": []
           },
@@ -63,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "IGVisualization-UI:build:production"
+              "browserTarget": "IGVisualization-ui:build:production"
             },
             "development": {
-              "browserTarget": "IGVisualization-UI:build:development"
+              "browserTarget": "IGVisualization-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "IGVisualization-UI:build"
+            "browserTarget": "IGVisualization-ui:build"
           }
         },
         "test": {

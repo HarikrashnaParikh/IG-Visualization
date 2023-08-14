@@ -1,10 +1,6 @@
 body {
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
-    overflow-y: auto;
-  }
-  .body{
-    height: 100vh;
   }
   
   /* leftside upload page */
@@ -49,7 +45,7 @@ body {
   .upload_rightside {
     text-align: center;
     min-height: 100vh;
-    padding: 40px 0;
+    padding: 30px 0;
   }
   .upload_form_container {
     width: 550px;
@@ -250,7 +246,7 @@ body {
   }
   
   .back-btn{
-  background: #FFFFFF;
+    background: #FFFFFF;
   border-radius: 4px;
   margin-bottom: 0;
   width: 90px;
@@ -313,7 +309,7 @@ body {
   text-align: center;
   color: #4D4D4D;
   border: none;
-  padding: 10px 22px;
+  padding: 10px 20px;
   position: relative;
   }
   .guide-tab .nav-tabs .nav-link .digit{
@@ -352,9 +348,6 @@ body {
   text-align: center;
   position: relative;
   width: 100%;
-  }
-  .white-box img{
-    /* width: 100%; */
   }
   @media (max-width: 768px) {
     .white-box img{
@@ -425,42 +418,3 @@ body {
     background: #F4F5F7;
     border-left: 3px solid #E4203B;
   }
-  
-  /*scrolling y axis in div */
-   .ScrollStyle
-  {
-      overflow-y: scroll;
-      height: calc(100vh - 185px) !important;
-      /* padding: 0px 8px !important; */
-  }
-  
-  .container {
-    width: 100%;
-    border: 1px solid black;
-  }
-  
-  .left {
-    width: 20%;
-    /* height: 78.5vh; */
-    border-right: 1px solid black;
-    float: left;
-  }
-  .left li{
-    cursor: pointer;
-  }
-  .right {
-    width: 80%;
-    float: left;
-  }
-  .json-data{
-    /* height: 610px; */
-    width: 100%;
-    background-color: white;
-  }
-  
-  /* for active tab in particular menu */
-  .tab-active {
-    background: #e4203b;
-    color: #fff;
-  }
-  

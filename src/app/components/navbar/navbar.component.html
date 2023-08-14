@@ -1,0 +1,99 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+/>
+
+<body>
+  <header class="d-flex flex-wrap cst_header form_header">
+    <a
+      href="/planDefinition"
+      class="d-flex align-items-center link-body-emphasis text-decoration-none"
+    >
+      <img
+        class="logo"
+        src="../../assets/images/logo-white.png"
+        alt="white-logo"
+      />
+    </a>
+    <h3>Implementation Guide</h3>
+    <button type="button" class="btnlight back-btn" (click)="backToHome()">
+      Back
+    </button>
+  </header>
+
+  <div class="main-content">
+    <div class="blue-header">
+      <div class="file-name me-4">
+        <a>
+          {{ capitalizedFirstName }}
+          <span>{{ fileName }}</span>
+        </a>
+      </div>
+      <div class="mx-auto" style="position: relative">
+        <div class="position-absolute">
+          <p-dropdown
+            (onChange)="getPdData()"
+            placeholder="Select Plan Definition:"
+            [(ngModel)]="selectedData"
+            [options]="pdIds"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+    </div>
+    <div class="px-3 guide-tab">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="home-tab"
+              type="button"
+              role="tab"
+              aria-controls="home"
+              aria-selected="false"
+              routerLinkActive="active"
+              routerLink="graph"
+            >
+              Graph
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="profile-tab"
+              type="button"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+              routerLinkActive="active"
+              routerLink="actions"
+              (click)="getActions()"
+            >
+              Actions
+              <span class="digit">{{ actionSize }}</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation" *ngFor="let resource of resourceData">
+            <button
+              class="nav-link"
+              id="profile-tab"
+              type="button"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+              routerLinkActive="active"
+              routerLink="resources"
+              *ngIf="resource.resourceName != 'PlanDefinition'"
+            >
+              {{resource.resourceName}}
+              <span class="digit"> {{resource.resourceCount}} </span>
+            </button>
+          </li>
+      </ul>
+    </div>
+  </div>
+</body>
