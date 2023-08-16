@@ -1,18 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GraphServiceService {
 
-  private url = 'http://localhost:8080';
-  
+  private selectedPlanDefinition = new BehaviorSubject<any>(null);
 
-  // inHome = new BehaviorSubject<boolean>(false)
-  // inHome:boolean=false
-  // activityDefinitionId : any;
+  setSelectedPlanDefinition(obj: any){
+    this.selectedPlanDefinition.next(obj);
+  }
+
+  getSelectedPlanDefinition():Observable<any | null>{
+    return this.selectedPlanDefinition.asObservable();
+  }
+
+  private url = 'http://localhost:8080';
 
   constructor(private httpClient: HttpClient) {}
   

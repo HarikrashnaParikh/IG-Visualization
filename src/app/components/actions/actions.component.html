@@ -2,8 +2,8 @@
 
     <div class="left p-2 ScrollStyle">
       <ul class="list-group">
-      <li class="list-group-item">
-       
+      <li class="list-group-item" *ngFor="let action of actions;" [ngClass]="{ 'tab-active': selectedId === action.title }" (click)="openAction(action.title)">
+       {{action.title}}
       </li>
     </ul>
   
@@ -11,7 +11,7 @@
   <div class="right p-2 ScrollStyle">
     <div class="json-data p-2 mx-auto">
       <div>
-        <pre></pre>
+        <pre>{{jsonData | json}}</pre>
       </div>
     </div>
   </div>

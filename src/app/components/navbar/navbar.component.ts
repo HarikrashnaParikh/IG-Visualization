@@ -32,6 +32,7 @@ export class NavbarComponent {
   allResource: any = [];
   resourceData: any = [];
   resourceDataLength: any = [];
+  currentPlanDefiniton: any;
   constructor(
     private router: Router,
     private graphService: GraphServiceService
@@ -55,9 +56,7 @@ export class NavbarComponent {
   getResourcesData(){
     this.graphService.getAllResourcesWithCount().subscribe((response: any) => {
         this.resourceData = response;
-    });
-    console.log(this.resourceData);
-    
+    });  
   }
 
   getPdIds() {
@@ -65,66 +64,35 @@ export class NavbarComponent {
       .getResource('planDefinition')
       .subscribe((response: any) => {
         this.planDefinition = response;
-        // console.log(response)
         this.pdIds = this.planDefinition.map((item: any) => item.resource.id);
       });
   }
 
   getPlanDefinitionData(selectedId: string) {
+    
     this.graphService
       .getResource('planDefinition')
       .subscribe((response: any) => {
         this.planDefinition = response;
         this.selectedPd = this.planDefinition.find((el: any) => el.resource.id === selectedId);
-        // console.log('select pd====', this.selectedPd);
         this.actionSize = this.selectedPd.resource.action.length;        
-        this.selectedPd.resource.action.forEach((data: any) => {
-          this.adIds.push(data.definitionCanonical.split('/').slice(-1).pop());
-        });
-        // console.log('temp array ####', this.adIds);
-        this.adIds.forEach((adId: any) => {
-          this.getActivityDefinitionData(adId);
-        });
-
-        // console.log(this.adData);
+        
       });
   }
 
   getActions(){
     this.actions = this.selectedPd.resource.action;
-    console.log(this.actions);
     this.router.navigate(['actions']);
     
   }
   
-  getActivityDefinitionData(selectedId: string) {
-    this.graphService.getResource('ActivityDefinition').subscribe((response: any) => {
-        this.ad = response;
-        this.adData.push(
-          this.ad.find((el: any) => el.resource.id === selectedId)
-        );
-
-      });
-  }
-
-  getLibraryData() {
-    this.graphService.getResource('Library').subscribe((response: any) => {
-      this.libraryData = response;
-    });
-  }
-
-  getDeviceData() {
-    this.graphService.getResource('Device').subscribe((response: any) => {
-      this.deviceData = response;
-    });
-  }
-
   async getPdData() {
-    const temp = this.selectedData;
+    const temp = this.selectedData;    
     await this.getPlanDefinitionData(temp);
-    this.getDeviceData();
-    this.getLibraryData();
 
+    this.currentPlanDefiniton = this.planDefinition.find((planDefinition: any) => planDefinition.resource.id == temp);
+    this.graphService.setSelectedPlanDefinition(this.currentPlanDefiniton);
+    
   }
 
   backToHome() {
