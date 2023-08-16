@@ -56,9 +56,7 @@ export class NavbarComponent {
   getResourcesData(){
     this.graphService.getAllResourcesWithCount().subscribe((response: any) => {
         this.resourceData = response;
-    });
-    console.log(this.resourceData);
-    
+    });  
   }
 
   getPdIds() {
@@ -66,13 +64,11 @@ export class NavbarComponent {
       .getResource('planDefinition')
       .subscribe((response: any) => {
         this.planDefinition = response;
-        // console.log(response)
         this.pdIds = this.planDefinition.map((item: any) => item.resource.id);
       });
   }
 
   getPlanDefinitionData(selectedId: string) {
-    console.log(selectedId);
     
     this.graphService
       .getResource('planDefinition')
@@ -80,14 +76,12 @@ export class NavbarComponent {
         this.planDefinition = response;
         this.selectedPd = this.planDefinition.find((el: any) => el.resource.id === selectedId);
         this.actionSize = this.selectedPd.resource.action.length;        
-        console.log(this.actionSize);
         
       });
   }
 
   getActions(){
     this.actions = this.selectedPd.resource.action;
-    console.log(this.actions);
     this.router.navigate(['actions']);
     
   }
@@ -98,7 +92,6 @@ export class NavbarComponent {
 
     this.currentPlanDefiniton = this.planDefinition.find((planDefinition: any) => planDefinition.resource.id == temp);
     this.graphService.setSelectedPlanDefinition(this.currentPlanDefiniton);
-    console.log(this.currentPlanDefiniton);
     
   }
 

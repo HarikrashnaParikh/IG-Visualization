@@ -24,12 +24,9 @@ export class UploadFileComponent {
       this.http.post('http://localhost:8080/file-upload', formData)
         .subscribe({
           next: (response) => {
-            // console.log(response);
-            // Handle success message or redirect to another page
           },
           error: (error) => {
             console.error('Error occurred during file upload:', error);
-            // Handle error message or display an error alert
           },
           complete: () => {
             this.router.navigate(['graph']);

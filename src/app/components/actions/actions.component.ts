@@ -34,9 +34,6 @@ export class ActionsComponent implements OnInit{
     this.selectedId = selectedId;
     this.currentAction = this.actions.find((action: any) => action.title = selectedId);
     this.jsonData = JSON.parse(JSON.stringify(this.currentAction));
-    console.log(this.currentAction.title);
-    
-    
   }
 
   
