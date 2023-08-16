@@ -32,6 +32,7 @@ export class NavbarComponent {
   allResource: any = [];
   resourceData: any = [];
   resourceDataLength: any = [];
+  currentPlanDefiniton: any;
   constructor(
     private router: Router,
     private graphService: GraphServiceService
@@ -71,22 +72,16 @@ export class NavbarComponent {
   }
 
   getPlanDefinitionData(selectedId: string) {
+    console.log(selectedId);
+    
     this.graphService
       .getResource('planDefinition')
       .subscribe((response: any) => {
         this.planDefinition = response;
         this.selectedPd = this.planDefinition.find((el: any) => el.resource.id === selectedId);
-        // console.log('select pd====', this.selectedPd);
         this.actionSize = this.selectedPd.resource.action.length;        
-        this.selectedPd.resource.action.forEach((data: any) => {
-          this.adIds.push(data.definitionCanonical.split('/').slice(-1).pop());
-        });
-        // console.log('temp array ####', this.adIds);
-        this.adIds.forEach((adId: any) => {
-          this.getActivityDefinitionData(adId);
-        });
-
-        // console.log(this.adData);
+        console.log(this.actionSize);
+        
       });
   }
 
@@ -97,34 +92,14 @@ export class NavbarComponent {
     
   }
   
-  getActivityDefinitionData(selectedId: string) {
-    this.graphService.getResource('ActivityDefinition').subscribe((response: any) => {
-        this.ad = response;
-        this.adData.push(
-          this.ad.find((el: any) => el.resource.id === selectedId)
-        );
-
-      });
-  }
-
-  getLibraryData() {
-    this.graphService.getResource('Library').subscribe((response: any) => {
-      this.libraryData = response;
-    });
-  }
-
-  getDeviceData() {
-    this.graphService.getResource('Device').subscribe((response: any) => {
-      this.deviceData = response;
-    });
-  }
-
   async getPdData() {
-    const temp = this.selectedData;
+    const temp = this.selectedData;    
     await this.getPlanDefinitionData(temp);
-    this.getDeviceData();
-    this.getLibraryData();
 
+    this.currentPlanDefiniton = this.planDefinition.find((planDefinition: any) => planDefinition.resource.id == temp);
+    this.graphService.setSelectedPlanDefinition(this.currentPlanDefiniton);
+    console.log(this.currentPlanDefiniton);
+    
   }
 
   backToHome() {

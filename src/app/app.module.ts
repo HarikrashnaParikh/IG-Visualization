@@ -21,14 +21,13 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     ActionsComponent,
     GraphComponent,
-    ResourcesComponent
+    ResourcesComponent  
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // OrganizationChartModule,
     HttpClientModule,
     DropdownModule
   ],

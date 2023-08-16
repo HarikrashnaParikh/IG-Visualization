@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'home', component: UploadFileComponent },
   { path: 'graph', component: GraphComponent },
   { path: 'actions', component: ActionsComponent },
-  { path: 'resources', component: ResourcesComponent }  
+  { path: 'resources/:resourceName', component: ResourcesComponent }  
 ];
 
 @NgModule({
