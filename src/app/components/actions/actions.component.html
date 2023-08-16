@@ -2,10 +2,10 @@
 
     <div class="left p-2 ScrollStyle">
       <ul class="list-group">
-      <li class="list-group-item" *ngFor="let action of actions;" [ngClass]="{ 'tab-active': selectedId === action.title }" (click)="openAction(action.title)">
-       {{action.title}}
-      </li>
-    </ul>
+        <li class="list-group-item" *ngFor="let action of actions;" [ngClass]="{ 'tab-active': action === currentAction }" (click)="openAction(action)">
+        {{action.title ? action.title : action.description}}
+        </li>
+      </ul>
   
   </div>
   <div class="right p-2 ScrollStyle">
@@ -16,5 +16,5 @@
     </div>
   </div>
   
-  </div>
+</div>
   
