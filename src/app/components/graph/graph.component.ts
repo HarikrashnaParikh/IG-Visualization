@@ -16,6 +16,8 @@ export class GraphComponent {
     activityDefinitionData: any = [];
     selectedActionId!: string;
     resourceData: any = [];
+    questionnaireData: any = [];
+    structureMapData: any = []; 
 
     constructor(private graphService: GraphServiceService){}  
     
@@ -54,55 +56,78 @@ export class GraphComponent {
         const actionDescription = action.description;        
         this.definitionCanonical = action.definitionCanonical;
         
-        //to get ad data for particular action
-        // this.getResourceData("ActivityDefinition",this.definitionCanonical);
-        // this.getActivityDefinitionData(this.definitionCanonical);
 
       const idStartIndex = this.definitionCanonical.lastIndexOf('/') + 1;
 
       //this is selected actions id to go further
       this.selectedActionId = this.definitionCanonical.substr(idStartIndex);
 
-      //api call for all ad
+      //api call for all ActivityDefinition
       this.graphService.getResource("ActivityDefinition").subscribe((adData: any) => {  
-        //for particular action there is a particular activityDefinition       
+        //for particular action there is a particular Questionnaire       
         this.activityDefinitionData = adData.find((data: any) => {           
           return data.resource.id === this.selectedActionId;                     
         });
-
-
-        //log
-        console.log("adData",this.activityDefinitionData);
-        
-
-        this.graphData[0].children?.push({
-          expanded: true,
-          type: 'person',
-          styleClass: 'bg-warning text-dark',
-          data: {
-            name: 'Action',
-            id: actionId,
-            description: actionDescription
-          },
-          children: [{
-            expanded: true,
-            type: 'person',
-            styleClass: 'bg-success text-white',
-            data: {
-              name: 'Activity Definition',
-              id: this.activityDefinitionData.resource.id,
-              description: this.activityDefinitionData.resource.useContext?.[0].valueCodeableConcept.coding[0].display ? this.activityDefinitionData.resource.useContext?.[0].valueCodeableConcept.coding[0].display : this.activityDefinitionData.resource.id,
-
-            },
-            children: []
-        }],
-        })
+        this.graphService.getResource("Questionnaire").subscribe((qData: any) => {  
+          //for particular action there is a particular Questionnaire       
+          this.questionnaireData = qData.find((data: any) => {           
+            return data.resource.id === this.selectedActionId;                     
+          });
+          this.graphService.getResource("StructureMap").subscribe((smData: any) => {  
+            //for particular action there is a particular StruvtureMap       
+            this.structureMapData = smData.find((data: any) => {           
+              return data.resource.id === this.selectedActionId;                     
+            });
+            /////graphData 
+            //log
+            console.log("adData",this.activityDefinitionData);
+            this.graphData[0].children?.push({
+              expanded: true,
+              type: 'person',
+              styleClass: 'bg-warning text-dark',
+              data: {
+                name: 'Action',
+                id: actionId,
+                description: actionDescription
+              },
+              children: [{
+                expanded: true,
+                type: 'person',
+                styleClass: 'bg-success text-white',
+                data: {
+                  name: 'Activity Definition',
+                  id: this.activityDefinitionData.resource.id,
+                  description: this.activityDefinitionData.resource.useContext?.[0].valueCodeableConcept.coding[0].display ? this.activityDefinitionData.resource.useContext?.[0].valueCodeableConcept.coding[0].display : this.activityDefinitionData.resource.id,
+                },
+                children: [{
+                  expanded: true,
+                  type : 'person',
+                  styleClass: 'bg-secondary text-white',
+                  data: {
+                  name: 'Questionnaire',
+                  id: this.questionnaireData.resource.id,
+                  description: this.questionnaireData.resource.useContext?.[0].valueCodeableConcept.coding[0].display ? this.questionnaireData.resource.useContext?.[0].valueCodeableConcept.coding[0].display : this.questionnaireData.resource.id,
+                },
+                children: [{
+                  expanded: true,
+                  type: 'person',
+                  styleClass: 'bg-danger text-white',
+                  data: {
+                    name: 'Struture Map',
+                    id: this.structureMapData.resource.id,
+                    description: this.structureMapData.resource.useContext?.[0].valueCodeableConcept.coding[0].display ? this.structureMapData.resource.useContext?.[0].valueCodeableConcept.coding[0].display : this.structureMapData.resource.id,
+                  },
+                  children: []
+                }]
+                }]
+            }],
+            })
+          });
+        });
       });
     }
     )
   }
-
-
     getActionData(){
       this.graphService.getSelectedPlanDefinition().subscribe((selectedPd) => {
       this.actionData = selectedPd.resource.action;
@@ -110,37 +135,6 @@ export class GraphComponent {
         
       })
     }
-
-
-    // async getResourceData(resourceType: string, definitionCanonical: string) {
-    //   const idStartIndex = definitionCanonical.lastIndexOf('/') + 1;
-    //   const selectedResourceId = definitionCanonical.substr(idStartIndex);
-      
-    //   // Modify the API call based on the resource type
-    //   await this.graphService.getResource(resourceType).subscribe((resourceData1: any) => {  
-    //     this.resourceData = resourceData1.find((data: any) => {           
-    //       return data.resource.id === selectedResourceId;          
-    //     });
-    //     console.log(this.resourceData);
-        
-    //   });
-    // }
-    
-
-    // getActivityDefinitionData(definitionCannonical: string ){        
-    //   const idStartIndex = definitionCannonical.lastIndexOf('/') + 1;
-    //   //this is selected actions id to go further
-    //   this.selectedActionId = definitionCannonical.substr(idStartIndex);
-    //   //api call for all ad
-    //   this.graphService.getResource("ActivityDefinition").subscribe((adData: any) => {  
-    //     //for particular action there is a particular activityDefinition       
-    //     this.activityDefinitionData = adData.find((data: any) => {           
-    //       return data.resource.id === this.selectedActionId;          
-    //     });
-    //     console.log("adadad****",this.activityDefinitionData);
-        
-    //   })
-    // }
 
     resetZoom() {
       const graphElement = document.getElementById('graph1');
