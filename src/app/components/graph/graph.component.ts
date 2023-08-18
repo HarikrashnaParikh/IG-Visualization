@@ -18,6 +18,9 @@ export class GraphComponent {
     resourceData: any = [];
     questionnaireData: any = [];
     structureMapData: any = []; 
+    allAdData: any = [];
+    allQData : any = [];
+    allSmData: any = [];
 
     constructor(private graphService: GraphServiceService){}  
     
@@ -25,16 +28,34 @@ export class GraphComponent {
       this.prerequisite();
     }
 
-    prerequisite(){
+    async prerequisite(){
+      console.log("Calling Selected Plan Definition");
       this.graphService.getSelectedPlanDefinition().subscribe((data)=> 
       {
         this.selectedPlanDefinitionData = data;
+        this.graphService.getResource("ActivityDefinition").subscribe((data) => {
+          console.log(data);
+          this.allAdData = data;
+          this.graphService.getResource("Questionnaire").subscribe((data) => {
+            this.allQData = data;
+            this.graphService.getResource("StructureMap").subscribe((data) => {
+              this.allSmData = data;
+              this.setGraphData(this.selectedPlanDefinitionData);
+            })
+          })
+        });
       }
       );
-      this.setGraphData(this.selectedPlanDefinitionData);
+      console.log("Calling Activity Definition");
+      
+      console.log("Calling Questionnaire");
+      
+      console.log("Calling Structure Map");
+      
+      console.log("Calling Set Graph Data");
     }
 
-    setGraphData(pdData: any){
+    async setGraphData(pdData: any){
       const pdId = pdData.resource.description ? pdData.resource.description : pdData.resource.id;
       this.graphData = [
         {
@@ -51,7 +72,7 @@ export class GraphComponent {
 
       this.getActionData();
 
-    const actionObservables = this.actionData.map((action: any) => {
+     this.actionData.forEach(async(action: any) => {
         const actionId = action.id ? action.id : action.title;        
         const actionDescription = action.description;        
         this.definitionCanonical = action.definitionCanonical;
@@ -61,111 +82,19 @@ export class GraphComponent {
 
       //this is selected actions id to go further
       this.selectedActionId = this.definitionCanonical.substr(idStartIndex);
+      // console.log(this.selectedActionId);
+      // console.log("Started Waiting For the response")
+      await this.callApi(actionId,actionDescription);
 
-      //api call for all ActivityDefinition
-      this.graphService.getResource("ActivityDefinition").subscribe((adData: any) => {  
-        if(adData){
-        //for particular action there is a particular Questionnaire       
-        this.activityDefinitionData = adData.find((data: any) => {           
-          return data.resource.id === this.selectedActionId;                     
-        });
-          const activityDefinitionNode = {
-            expanded: true,
-            type: 'person',
-            styleClass: 'bg-success text-white',
-            data: {
-              name: 'Activity Definition',
-              id: this.activityDefinitionData.resource.id,
-              description: this.activityDefinitionData.resource.useContext?.[0].valueCodeableConcept.coding[0].display ? this.activityDefinitionData.resource.useContext?.[0].valueCodeableConcept.coding[0].display : this.activityDefinitionData.resource.id,
-            },
-            children: []
-          }
-        }
-        else{
-          this.activityDefinitionData = [];
-        }  
-
-  
-        this.graphService.getResource("Questionnaire").subscribe((qData: any) => {  
-          //for particular action there is a particular Questionnaire       
-          this.questionnaireData = qData.find((data: any) => {           
-            return data.resource.id === this.selectedActionId;                     
-          });
-          // Inside the setGraphData function
-          this.graphService.getResource("StructureMap").subscribe((smData: any) => {
-            this.structureMapData = smData.find((data: any) => {
-              return data.resource.id === this.selectedActionId;
-            });
-          
-            // Adding Structure Map node if data is available
-            const structureMapNode = this.structureMapData ? {
-              expanded: true,
-              type: 'person',
-              styleClass: 'bg-danger text-white',
-              data: {
-                name: 'Structure Map',
-                id: this.structureMapData.resource.id,
-                description: this.structureMapData.resource.useContext?.[0].valueCodeableConcept.coding[0].display
-                  ? this.structureMapData.resource.useContext[0].valueCodeableConcept.coding[0].display
-                  : this.structureMapData.resource.id,
-              },
-              children: [], // No children for Structure Map as per your original structure
-            } : null;
-          
-            // Adding Questionnaire node with Structure Map as its child if data is available
-            const questionnaireNode = this.questionnaireData ? {
-              expanded: true,
-              type: 'person',
-              styleClass: 'bg-secondary text-white',
-              data: {
-                name: 'Questionnaire',
-                id: this.questionnaireData.resource.id,
-                description: this.questionnaireData.resource.useContext?.[0].valueCodeableConcept.coding[0].display
-                  ? this.questionnaireData.resource.useContext[0].valueCodeableConcept.coding[0].display
-                  : this.questionnaireData.resource.id,
-              },
-              children: structureMapNode ? [structureMapNode] : [],
-            } : null;
-          
-            // Adding Activity Definition node with Questionnaire as its child if data is available
-            const activityDefinitionNode = this.activityDefinitionData ? {
-              expanded: true,
-              type: 'person',
-              styleClass: 'bg-success text-white',
-              data: {
-                name: 'Activity Definition',
-                id: this.activityDefinitionData.resource.id,
-                description: this.activityDefinitionData.resource.useContext?.[0].valueCodeableConcept.coding[0].display
-                  ? this.activityDefinitionData.resource.useContext[0].valueCodeableConcept.coding[0].display
-                  : this.activityDefinitionData.resource.id,
-              },
-              children: questionnaireNode ? [questionnaireNode] : [],
-            } : null;
-          
-            // Adding Action node with Activity Definition as its child if data is available
-            const actionNode = {
-              expanded: true,
-              type: 'person',
-              styleClass: 'bg-warning text-dark',
-              data: {
-                name: 'Action',
-                id: actionId,
-                description: actionDescription,
-              },
-              children: activityDefinitionNode ? [activityDefinitionNode] : [],
-            };
-          
-            this.graphData[0].children?.push(actionNode);
-          });
-        });
-      });
+      // console.log("Response Is Awaited")
+      
     }
     )
   }
     getActionData(){
       this.graphService.getSelectedPlanDefinition().subscribe((selectedPd) => {
       this.actionData = selectedPd.resource.action;
-      console.log("================aksfkhczskc======",this.actionData);
+      // console.log("================aksfkhczskc======",this.actionData);
         
       })
     }
@@ -198,5 +127,86 @@ export class GraphComponent {
         const newScale = currentScale + currentScale / 10;
         graphElement.style.transform = `scale(${newScale})`;
       }
+    }
+    callApi(actionId: string ,actionDescription: string){
+
+      //api call for all ActivityDefinition
+      // console.log("Api is to be called",actionId)
+      return new Promise<void>((res,rej)=>{
+        console.log(this.allAdData);
+      
+      this.activityDefinitionData = this.allAdData.find((data: any) => {  
+        console.log(data);         
+        return data.resource.id === this.selectedActionId;                     
+      });
+      console.log(this.activityDefinitionData);
+      this.questionnaireData = this.allQData.find((data: any) => {           
+        return data.resource.id === this.selectedActionId;                     
+      });
+
+      this.structureMapData = this.allSmData.find((data: any) => {
+        return data.resource.id === this.selectedActionId;
+      });
+      res();    
+      // Adding Structure Map node if data is available
+      const structureMapNode = this.structureMapData ? {
+        expanded: true,
+        type: 'person',
+        styleClass: 'bg-danger text-white',
+        data: {
+          name: 'Structure Map',
+          id: this.structureMapData.resource.id,
+          description: this.structureMapData.resource.useContext?.[0].valueCodeableConcept.coding[0].display
+            ? this.structureMapData.resource.useContext[0].valueCodeableConcept.coding[0].display
+            : this.structureMapData.resource.id,
+        },
+        children: [], // No children for Structure Map as per your original structure
+      } : null;
+    
+      // Adding Questionnaire node with Structure Map as its child if data is available
+      const questionnaireNode = this.questionnaireData ? {
+        expanded: true,
+        type: 'person',
+        styleClass: 'bg-secondary text-white',
+        data: {
+          name: 'Questionnaire',
+          id: this.questionnaireData.resource.id,
+          description: this.questionnaireData.resource.useContext?.[0].valueCodeableConcept.coding[0].display
+            ? this.questionnaireData.resource.useContext[0].valueCodeableConcept.coding[0].display
+            : this.questionnaireData.resource.id,
+        },
+        children: structureMapNode ? [structureMapNode] : [],
+      } : null;
+    
+      // Adding Activity Definition node with Questionnaire as its child if data is available
+      const activityDefinitionNode = this.activityDefinitionData ? {
+        expanded: true,
+        type: 'person',
+        styleClass: 'bg-success text-white',
+        data: {
+          name: 'Activity Definition',
+          id: this.activityDefinitionData.resource.id,
+          description: this.activityDefinitionData.resource.useContext?.[0].valueCodeableConcept.coding[0].display
+            ? this.activityDefinitionData.resource.useContext[0].valueCodeableConcept.coding[0].display
+            : this.activityDefinitionData.resource.id,
+        },
+        children: questionnaireNode ? [questionnaireNode] : [],
+      } : null;
+    
+      // Adding Action node with Activity Definition as its child if data is available
+      const actionNode = {
+        expanded: true,
+        type: 'person',
+        styleClass: 'bg-warning text-dark',
+        data: {
+          name: 'Action',
+          id: actionId,
+          description: actionDescription,
+        },
+        children: activityDefinitionNode ? [activityDefinitionNode] : [],
+      };
+    
+      this.graphData[0].children?.push(actionNode);
+      });
     }
 }
