@@ -29,12 +29,10 @@ export class GraphComponent {
     }
 
     async prerequisite(){
-      console.log("Calling Selected Plan Definition");
       this.graphService.getSelectedPlanDefinition().subscribe((data)=> 
       {
         this.selectedPlanDefinitionData = data;
         this.graphService.getResource("ActivityDefinition").subscribe((data) => {
-          console.log(data);
           this.allAdData = data;
           this.graphService.getResource("Questionnaire").subscribe((data) => {
             this.allQData = data;
@@ -75,11 +73,9 @@ export class GraphComponent {
 
       //this is selected actions id to go further
       this.selectedActionId = this.definitionCanonical.substr(idStartIndex);
-      // console.log(this.selectedActionId);
-      // console.log("Started Waiting For the response")
+
       await this.callApi(actionId,actionDescription);
 
-      // console.log("Response Is Awaited")
       
     }
     )
@@ -87,7 +83,6 @@ export class GraphComponent {
     getActionData(){
       this.graphService.getSelectedPlanDefinition().subscribe((selectedPd) => {
       this.actionData = selectedPd.resource.action;
-      // console.log("================aksfkhczskc======",this.actionData);
         
       })
     }
@@ -124,15 +119,11 @@ export class GraphComponent {
     callApi(actionId: string ,actionDescription: string){
 
       //api call for all ActivityDefinition
-      // console.log("Api is to be called",actionId)
       return new Promise<void>((res,rej)=>{
-        console.log(this.allAdData);
       
       this.activityDefinitionData = this.allAdData.find((data: any) => {  
-        console.log(data);         
         return data.resource.id === this.selectedActionId;                     
       });
-      console.log(this.activityDefinitionData);
       this.questionnaireData = this.allQData.find((data: any) => {           
         return data.resource.id === this.selectedActionId;                     
       });
