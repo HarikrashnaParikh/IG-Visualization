@@ -21,6 +21,7 @@ export class GraphComponent {
     allAdData: any = [];
     allQData : any = [];
     allSmData: any = [];
+    targetData: any = [];
 
     constructor(private graphService: GraphServiceService){}  
     
@@ -87,6 +88,18 @@ export class GraphComponent {
       })
     }
 
+    getTargetFromStructureMap(){
+      const structureData:any[] = this.structureMapData.resource.structure;
+      this.targetData = []; 
+      structureData.forEach((data: any) =>
+      {
+        if(data.mode === "target"){
+          this.targetData.push(data);
+        }
+      }
+      );
+    }
+
     resetZoom() {
       const graphElement = document.getElementById('graph1');
       if (graphElement) {
@@ -127,10 +140,27 @@ export class GraphComponent {
       this.questionnaireData = this.allQData.find((data: any) => {           
         return data.resource.id === this.selectedActionId;                     
       });
-
       this.structureMapData = this.allSmData.find((data: any) => {
         return data.resource.id === this.selectedActionId;
       });
+      if(this.structureMapData)
+      {
+        this.getTargetFromStructureMap();
+      }
+      const target: any = [];
+      this.targetData.forEach((targetData: any) => {
+        target.push( targetData ? {
+          expanded : true,
+          type: 'person',
+          styleClass: 'bg-light text-dark',
+          data: {
+            name : 'Target',
+            description : targetData.alias,
+          },
+          children : []
+        } : null
+        )
+      })
       res();    
       // Adding Structure Map node if data is available
       const structureMapNode = this.structureMapData ? {
@@ -144,7 +174,7 @@ export class GraphComponent {
             ? this.structureMapData.resource.useContext[0].valueCodeableConcept.coding[0].display
             : this.structureMapData.resource.id,
         },
-        children: [], // No children for Structure Map as per your original structure
+        children: target ? target : [], // No children for Structure Map as per your original structure
       } : null;
     
       // Adding Questionnaire node with Structure Map as its child if data is available
