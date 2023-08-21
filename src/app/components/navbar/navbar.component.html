@@ -34,65 +34,67 @@
         </a>
       </div>
       <div class="mx-auto" style="position: relative">
-        <div class="position-absolute">
-          <p-dropdown
+        <p-dropdown
           placeholder="Select Plan Definition:"
           [(ngModel)]="selectedData"
           [options]="pdIds"
           (onChange)="getPdData()"
-          >
-          </p-dropdown>
-        </div>
+        >
+        </p-dropdown>
       </div>
     </div>
     <div class="px-3 guide-tab">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="home-tab"
-              type="button"
-              role="tab"
-              aria-controls="home"
-              aria-selected="false"
-              routerLinkActive="active"
-              routerLink="graph"
-            >
-              Graph
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="profile-tab"
-              type="button"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
-              routerLinkActive="active"
-              routerLink="actions"
-              (click)="getActions()"
-            >
-              Actions
-              <span class="digit">{{ actionSize }}</span>
-            </button>
-          </li>
-          <li class="nav-item" role="presentation" *ngFor="let resource of resourceData">
-            <button
-              class="nav-link"
-              id="profile-tab"
-              type="button"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
-              routerLinkActive="active"
-              routerLink="resources/{{resource.resourceName}}"
-              *ngIf="resource.resourceName != 'PlanDefinition'"
-            >
-              {{resource.resourceName}}
-              <span class="digit"> {{resource.resourceCount}} </span>
-            </button>
-          </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="home-tab"
+            type="button"
+            role="tab"
+            aria-controls="home"
+            aria-selected="false"
+            routerLinkActive="active"
+            routerLink="graph"
+          >
+            Graph
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="profile-tab"
+            type="button"
+            role="tab"
+            aria-controls="profile"
+            aria-selected="false"
+            routerLinkActive="active"
+            routerLink="actions"
+            (click)="getActions()"
+          >
+            Actions
+            <span class="digit">{{ actionSize }}</span>
+          </button>
+        </li>
+        <li
+          class="nav-item"
+          role="presentation"
+          *ngFor="let resource of resourceData"
+        >
+          <button
+            class="nav-link"
+            id="profile-tab"
+            type="button"
+            role="tab"
+            aria-controls="profile"
+            aria-selected="false"
+            routerLinkActive="active"
+            routerLink="resources/{{ resource.resourceName }}"
+            *ngIf="resource.resourceName != 'PlanDefinition'"
+          >
+            {{ resource.resourceName }}
+            <span class="digit"> {{ resource.resourceCount }} </span>
+          </button>
+        </li>
       </ul>
     </div>
   </div>
