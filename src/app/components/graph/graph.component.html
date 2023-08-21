@@ -7,7 +7,7 @@
 
 <div class="shadow bg-body rounded">
 <div class="shadow mx-auto p-3 bg-body rounded card d-flex ScrollStyle flex-row">
-  <p-organizationChart id="graph1" [value]="graphData" class="w-100">
+  <p-organizationChart id="graph1" [value]="graphData" class="w-100" *ngIf="selectedPlanDefinitionData">
     <ng-template let-node pTemplate="person">
       <div class="p-1 text-center">
         <!-- <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" /> -->

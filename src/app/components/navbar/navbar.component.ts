@@ -65,6 +65,12 @@ export class NavbarComponent {
       .subscribe((response: any) => {
         this.planDefinition = response;
         this.pdIds = this.planDefinition.map((item: any) => item.resource.id);
+        if (this.pdIds.length > 0) {
+          this.selectedData = this.pdIds[0]; // Set the first item as default
+          this.getPlanDefinitionData(this.selectedData);
+          this.currentPlanDefiniton = this.planDefinition.find((planDefinition: any) => planDefinition.resource.id == this.selectedData);
+          this.graphService.setSelectedPlanDefinition(this.currentPlanDefiniton);
+        }
       });
   }
 
@@ -76,7 +82,6 @@ export class NavbarComponent {
         this.planDefinition = response;
         this.selectedPd = this.planDefinition.find((el: any) => el.resource.id === selectedId);
         this.actionSize = this.selectedPd.resource.action.length;        
-        
       });
   }
 
@@ -86,9 +91,9 @@ export class NavbarComponent {
     
   }
   
-  async getPdData() {
+  getPdData() {
     const temp = this.selectedData;    
-    await this.getPlanDefinitionData(temp);
+    this.getPlanDefinitionData(temp);
 
     this.currentPlanDefiniton = this.planDefinition.find((planDefinition: any) => planDefinition.resource.id == temp);
     this.graphService.setSelectedPlanDefinition(this.currentPlanDefiniton);
@@ -96,6 +101,7 @@ export class NavbarComponent {
   }
 
   backToHome() {
+    this.graphService.setSelectedPlanDefinition(null);
     this.router.navigate(['home']);
   }
 }
