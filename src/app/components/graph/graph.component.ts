@@ -131,7 +131,6 @@ export class GraphComponent {
     }
     callApi(actionId: string ,actionDescription: string){
 
-      //api call for all ActivityDefinition
       return new Promise<void>((res,rej)=>{
       
       this.activityDefinitionData = this.allAdData.find((data: any) => {  
@@ -162,7 +161,6 @@ export class GraphComponent {
         )
       })
       res();    
-      // Adding Structure Map node if data is available
       const structureMapNode = this.structureMapData ? {
         expanded: true,
         type: 'person',
@@ -174,10 +172,9 @@ export class GraphComponent {
             ? this.structureMapData.resource.useContext[0].valueCodeableConcept.coding[0].display
             : this.structureMapData.resource.id,
         },
-        children: target ? target : [], // No children for Structure Map as per your original structure
+        children: target ? target : [], 
       } : null;
     
-      // Adding Questionnaire node with Structure Map as its child if data is available
       const questionnaireNode = this.questionnaireData ? {
         expanded: true,
         type: 'person',
@@ -192,7 +189,6 @@ export class GraphComponent {
         children: structureMapNode ? [structureMapNode] : [],
       } : null;
     
-      // Adding Activity Definition node with Questionnaire as its child if data is available
       const activityDefinitionNode = this.activityDefinitionData ? {
         expanded: true,
         type: 'person',
@@ -207,7 +203,6 @@ export class GraphComponent {
         children: questionnaireNode ? [questionnaireNode] : [],
       } : null;
     
-      // Adding Action node with Activity Definition as its child if data is available
       const actionNode = {
         expanded: true,
         type: 'person',
