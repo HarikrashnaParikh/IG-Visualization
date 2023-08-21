@@ -26,20 +26,21 @@
   </header>
 
   <div class="main-content">
-    <div class="blue-header">
+    <div class="blue-header justify-content-between">
       <div class="file-name me-4">
         <a>
           {{ capitalizedFirstName }}
           <span>{{ fileName }}</span>
         </a>
       </div>
-      <div class="mx-auto" style="position: relative"> 
-        Select PlanDefinition :    
+      <div class="" style="position: relative"> 
+        Select PlanDefinition :               
         <p-dropdown
           placeholder="Select Plan Definition:"
           [(ngModel)]="selectedData"
           [options]="pdIds"
           (onChange)="getPdData()"
+          class="p-2"
         >
         </p-dropdown>
       </div>
