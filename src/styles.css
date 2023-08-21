@@ -267,7 +267,7 @@ body {
   .blue-header{
     background: #F9F9F9;
     height: 70px;
-    padding: 0 30px;
+    padding: 0 14.5px 0 26px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #DFE7EF;
@@ -428,6 +428,9 @@ body {
    .ScrollStyle
   {
       overflow-y: scroll;
+      overflow-x: scroll;
+      scrollbar-width: auto;
+      height: auto;
       height: calc(100vh - 185px) !important;
       /* padding: 0px 8px !important; */
   }

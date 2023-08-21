@@ -46,13 +46,6 @@ export class GraphComponent {
         });
       }
       );
-      console.log("Calling Activity Definition");
-      
-      console.log("Calling Questionnaire");
-      
-      console.log("Calling Structure Map");
-      
-      console.log("Calling Set Graph Data");
     }
 
     async setGraphData(pdData: any){
@@ -188,7 +181,7 @@ export class GraphComponent {
           id: this.activityDefinitionData.resource.id,
           description: this.activityDefinitionData.resource.useContext?.[0].valueCodeableConcept.coding[0].display
             ? this.activityDefinitionData.resource.useContext[0].valueCodeableConcept.coding[0].display
-            : this.activityDefinitionData.resource.id,
+            : (this.activityDefinitionData.resource.description ? this.activityDefinitionData.resource.description : this.activityDefinitionData.resource.id ),
         },
         children: questionnaireNode ? [questionnaireNode] : [],
       } : null;
