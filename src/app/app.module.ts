@@ -12,6 +12,9 @@ import { ResourcesComponent } from './components/resources/resources.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {ScrollerModule} from 'primeng/scroller';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -27,10 +30,12 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     OrganizationChartModule,
     HttpClientModule,
-    DropdownModule
+    DropdownModule,
+    ScrollerModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

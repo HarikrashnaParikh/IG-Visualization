@@ -28,6 +28,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css",
               "src/assets/slick/slick.css",
               "src/assets/slick/slick-theme.css"

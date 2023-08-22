@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GraphServiceService } from 'src/app/services/graphService/graph-service.service';
+import { NotificationService } from 'src/app/services/toaster/notification.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-upload-file',
@@ -14,7 +16,12 @@ export class UploadFileComponent {
   file!: File;
   isDragOver = false;
   fileName!: string;
-  constructor(private http: HttpClient, private router: Router,private graphService: GraphServiceService) {}
+  constructor(private http: HttpClient, 
+              private router: Router,
+              private graphService: GraphServiceService,
+              private notificationService: NotificationService,
+              private toastr:ToastrService
+              ) {}
 
   onSubmit() {
     if (this.file) {
@@ -24,11 +31,15 @@ export class UploadFileComponent {
       this.http.post('http://localhost:8080/file-upload', formData)
         .subscribe({
           next: (response) => {
+            console.log("====",response)
           },
           error: (error) => {
+            this.toastr.error(error.error.data,"Oops..")
             console.error('Error occurred during file upload:', error);
           },
           complete: () => {
+            // this.notificationService.showToast("success","Welcome to IG Visualization","File upload successfully !!")
+            this.toastr.success("File upload successfully !!","Welcome to IG Visualization,")
             this.router.navigate(['graph']);
           }
         });
