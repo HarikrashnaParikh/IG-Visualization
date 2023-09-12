@@ -6,7 +6,7 @@
 />
 
 <div class="shadow bg-body rounded">
-<div class="shadow mx-auto p-3 bg-body rounded card d-flex ScrollStyle flex-row">
+<div class="shadow mx-auto p-3 bg-body rounded card d-flex ScrollStyle flex-row chart-container">
   <p-organizationChart id="graph1" [value]="graphData" class="w-100" *ngIf="selectedPlanDefinitionData">
     <ng-template let-node pTemplate="person">
       <div class="p-1 text-center">
@@ -14,7 +14,7 @@
         <div class="font-bold">{{ node.data.name }}</div>
         <hr />
         <!-- <div class="font-bold">Id : {{ node.data.id }}</div> -->
-        <div>Description : {{ node.data.description }}</div>
+        <div style="min-width: 190px;">Description : {{ node.data.description }}</div>
         <!-- <br>
         <div>Definition Canonical: {{ node.data.definitionCanonical }}</div> -->
       </div>
