@@ -31,11 +31,11 @@ export class UploadFileComponent {
       this.http.post('http://localhost:8080/file-upload', formData)
         .subscribe({
           next: (response) => {
-            console.log("====",response)
+            // console.log("====",response);
           },
           error: (error) => {
             this.toastr.error(error.error.data,"Oops..")
-            console.error('Error occurred during file upload:', error);
+            // console.error('Error occurred during file upload:', error);
           },
           complete: () => {
             // this.notificationService.showToast("success","Welcome to IG Visualization","File upload successfully !!")
