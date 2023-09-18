@@ -17,7 +17,7 @@ export class GraphServiceService {
     return this.selectedPlanDefinition.asObservable();
   }
 
-  private url = 'http://localhost:8080';
+  private url = 'https://igvisualization-web-production.up.railway.app';
 
   constructor(private httpClient: HttpClient) {}
   

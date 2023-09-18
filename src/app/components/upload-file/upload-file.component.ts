@@ -28,7 +28,7 @@ export class UploadFileComponent {
       const formData: FormData = new FormData();
       formData.append('bundle', this.file, this.file.name);
 
-      this.http.post('http://localhost:8080/file-upload', formData)
+      this.http.post('https://igvisualization-web-production.up.railway.app/file-upload', formData)
         .subscribe({
           next: (response) => {
             // console.log("====",response);
